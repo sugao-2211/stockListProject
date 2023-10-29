@@ -21,8 +21,4 @@ public class StockListService {
         return stockListMapper.findAll();
     }
 
-    public List<StockList> partData(String name) {
-        return stockListMapper.findByName(name);
-    }
-
 }

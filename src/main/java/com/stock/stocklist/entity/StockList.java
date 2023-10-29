@@ -1,10 +1,7 @@
 package com.stock.stocklist.entity;
 
-import lombok.Getter;
-
 import java.time.LocalDate;
 
-@Getter
 public class StockList {
 
     private int id;
@@ -23,4 +20,27 @@ public class StockList {
         this.purchase = purchase;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public LocalDate getPurchase() {
+        return purchase;
+    }
 }
