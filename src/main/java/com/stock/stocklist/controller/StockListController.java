@@ -1,5 +1,6 @@
 package com.stock.stocklist.controller;
 
+import com.stock.stocklist.controller.response.ThousandsSeparatorResponse;
 import com.stock.stocklist.entity.StockList;
 import com.stock.stocklist.service.StockListService;
 import org.springframework.http.ResponseEntity;
@@ -20,15 +21,17 @@ public class StockListController {
     }
 
     @GetMapping("/stockList")
-    public ResponseEntity<List<StockList>> allData() {
+    public ResponseEntity<List<ThousandsSeparatorResponse>> allData() {
         List<StockList> getData = stockListService.findAll();
-        return ResponseEntity.ok(getData);
+        List<ThousandsSeparatorResponse> allData = getData.stream().map(ThousandsSeparatorResponse::new).toList();
+        return ResponseEntity.ok(allData);
     }
 
     @GetMapping("/stockList/{id}")
-    public ResponseEntity<Optional<StockList>> partData(@PathVariable int id) {
+    public ResponseEntity<List<ThousandsSeparatorResponse>> partData(@PathVariable int id) {
         Optional<StockList> getData = stockListService.findById(id);
-        return ResponseEntity.ok(getData);
+        List<ThousandsSeparatorResponse> partData = getData.stream().map(ThousandsSeparatorResponse::new).toList();
+        return ResponseEntity.ok(partData);
     }
 
 }
