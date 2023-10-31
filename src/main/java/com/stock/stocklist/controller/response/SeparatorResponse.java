@@ -4,7 +4,7 @@ import com.stock.stocklist.entity.StockList;
 
 import java.time.LocalDate;
 
-public class ThousandsSeparatorResponse {
+public class SeparatorResponse {
     private int id;
     private String name;
     private String grade;
@@ -12,7 +12,7 @@ public class ThousandsSeparatorResponse {
     private String unit;
     private LocalDate purchase;
 
-    public ThousandsSeparatorResponse(StockList stockList) {
+    public SeparatorResponse(StockList stockList) {
         this.id = stockList.getId();
         this.name = stockList.getName();
         this.grade = stockList.getGrade();

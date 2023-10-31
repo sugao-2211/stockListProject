@@ -1,6 +1,6 @@
 package com.stock.stocklist.controller;
 
-import com.stock.stocklist.controller.response.ThousandsSeparatorResponse;
+import com.stock.stocklist.controller.response.SeparatorResponse;
 import com.stock.stocklist.entity.StockList;
 import com.stock.stocklist.exception.NotFoundException;
 import com.stock.stocklist.service.StockListService;
@@ -26,16 +26,16 @@ public class StockListController {
     }
 
     @GetMapping("/stockList")
-    public ResponseEntity<List<ThousandsSeparatorResponse>> findData(String name) {
+    public ResponseEntity<List<SeparatorResponse>> findData(String name) {
         List<StockList> getData = stockListService.findData(name);
-        List<ThousandsSeparatorResponse> findData = getData.stream().map(ThousandsSeparatorResponse::new).toList();
+        List<SeparatorResponse> findData = getData.stream().map(SeparatorResponse::new).toList();
         return ResponseEntity.ok(findData);
     }
 
     @GetMapping("/stockList/{id}")
-    public ResponseEntity<ThousandsSeparatorResponse> partData(@PathVariable int id) {
+    public ResponseEntity<SeparatorResponse> partData(@PathVariable int id) {
         StockList getData = stockListService.findById(id);
-        ThousandsSeparatorResponse partData = new ThousandsSeparatorResponse(getData);
+        SeparatorResponse partData = new SeparatorResponse(getData);
         return ResponseEntity.ok(partData);
     }
 
