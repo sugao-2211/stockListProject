@@ -13,15 +13,19 @@
     - 全件検索及び部分一致検索(クエリパラメータ)の実装
     - id検索(パスパラメータ検索)の実装
     - 1000以上の数字を3桁区切りで表示(1,000)する変換処理を実装
+    - 部分一致検索(クエリパラメータ)の例外処理
+    - id検索(パスパラメータ検索)の例外処理
 - Create処理
     - 今後実装予定
 - Update処理
     - 今後実装予定
 - Delete処理
     - 今後実装予定
+
 ##
 
-#### データベース作成時の内容  
+#### データベース作成時の内容
+
 |**id**|**name**|**grade**|**quantity**|**unit**|**purchase**|      
 |:--:|:--:|:--:|:--:|:--:|:--:|  
 |1|メタノール|HPLC用|3|L|2023−05−24|  
@@ -40,8 +44,12 @@
 - データベース全件検索
 - クエリパラメータ(name)に合致するものを部分一致検索  
   「硫酸」で検索
+- クエリパラメータ(name)の部分一致検索における例外処理  
+  「硝酸」で検索し例外処理を発生
 - パスパラメータ(id)に合致するものを検索  
   id「4」で検索
+- パスパラメータ(id)の検索における例外処理  
+  id「9」で検索し例外処理を発生
 
 ##
 
@@ -51,8 +59,8 @@
       curl --location 'http://localhost:8080/stockList'
       ```
     - 実行結果
-<img width="1012" alt="スクリーンショット 2023-10-31 13 33 02" src="https://github.com/sugao-2211/stockListProject/assets/141313076/028da7e0-c77a-4c33-acfc-0e05c0a5d1bd">
-<img width="1010" alt="スクリーンショット 2023-10-31 13 33 23" src="https://github.com/sugao-2211/stockListProject/assets/141313076/a0430fdd-3ffd-4595-8ce0-2f9176e4b1a2">
+      <img width="1012" alt="スクリーンショット 2023-10-31 13 33 02" src="https://github.com/sugao-2211/stockListProject/assets/141313076/028da7e0-c77a-4c33-acfc-0e05c0a5d1bd">
+      <img width="1010" alt="スクリーンショット 2023-10-31 13 33 23" src="https://github.com/sugao-2211/stockListProject/assets/141313076/a0430fdd-3ffd-4595-8ce0-2f9176e4b1a2">
 
 ##
 
@@ -63,7 +71,17 @@
       ```
       硫酸のエンコード：%E7%A1%AB%E9%85%B8
     - 実行結果
-<img width="1014" alt="スクリーンショット 2023-10-31 13 36 14" src="https://github.com/sugao-2211/stockListProject/assets/141313076/8431d332-9193-43a1-ba17-0da8de9caaa8">
+      <img width="1014" alt="スクリーンショット 2023-10-31 13 36 14" src="https://github.com/sugao-2211/stockListProject/assets/141313076/8431d332-9193-43a1-ba17-0da8de9caaa8">
+
+##
+
+- 部分一致検索(クエリパラメータ検索)における例外処理
+    - curlコマンド
+      ```
+      curl --location 'http://localhost:8080/stockList?name=%E7%A1%9D%E9%85%B8'
+      ```
+      硝酸のエンコード：%E7%A1%9D%E9%85%B8
+    - 実行結果
 
 ##
 
@@ -73,8 +91,16 @@
       curl --location 'http://localhost:8080/stockList/4'
       ```
     - 実行結果  
-<img width="1020" alt="スクリーンショット 2023-10-31 14 14 18" src="https://github.com/sugao-2211/stockListProject/assets/141313076/74df72a1-4d08-4210-b0de-8ceb9c2e8a3d">
+      <img width="1020" alt="スクリーンショット 2023-10-31 14 14 18" src="https://github.com/sugao-2211/stockListProject/assets/141313076/74df72a1-4d08-4210-b0de-8ceb9c2e8a3d">
 
+##
+
+- id検索(パスパラメータ検索)における例外処理
+    - curlコマンド
+      ```
+      curl --location 'http://localhost:8080/stockList/9'
+      ```
+    - 実行結果
 
 ***
 
