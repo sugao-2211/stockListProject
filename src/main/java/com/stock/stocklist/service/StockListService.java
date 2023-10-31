@@ -6,6 +6,7 @@ import lombok.Getter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -18,8 +19,14 @@ public class StockListService {
         this.stockListMapper = stockListMapper;
     }
 
-    public List<StockList> findAll() {
-        return stockListMapper.findAll();
+    public List<StockList> findData(String name) {
+        List<StockList> getData;
+        if (Objects.isNull(name)) {
+            getData = stockListMapper.findAll();
+        } else {
+            getData = stockListMapper.findByName(name);
+        }
+        return getData;
     }
 
     public Optional<StockList> findById(int id) {

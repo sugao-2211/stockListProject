@@ -21,10 +21,10 @@ public class StockListController {
     }
 
     @GetMapping("/stockList")
-    public ResponseEntity<List<ThousandsSeparatorResponse>> allData() {
-        List<StockList> getData = stockListService.findAll();
-        List<ThousandsSeparatorResponse> allData = getData.stream().map(ThousandsSeparatorResponse::new).toList();
-        return ResponseEntity.ok(allData);
+    public ResponseEntity<List<ThousandsSeparatorResponse>> findData(String name) {
+        List<StockList> getData = stockListService.findData(name);
+        List<ThousandsSeparatorResponse> findData = getData.stream().map(ThousandsSeparatorResponse::new).toList();
+        return ResponseEntity.ok(findData);
     }
 
     @GetMapping("/stockList/{id}")
