@@ -2,14 +2,19 @@ package com.stock.stocklist.controller;
 
 import com.stock.stocklist.controller.response.ThousandsSeparatorResponse;
 import com.stock.stocklist.entity.StockList;
+import com.stock.stocklist.exception.NotFoundException;
 import com.stock.stocklist.service.StockListService;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 @RestController
 public class StockListController {
@@ -28,10 +33,22 @@ public class StockListController {
     }
 
     @GetMapping("/stockList/{id}")
-    public ResponseEntity<List<ThousandsSeparatorResponse>> partData(@PathVariable int id) {
-        Optional<StockList> getData = stockListService.findById(id);
-        List<ThousandsSeparatorResponse> partData = getData.stream().map(ThousandsSeparatorResponse::new).toList();
+    public ResponseEntity<ThousandsSeparatorResponse> partData(@PathVariable int id) {
+        StockList getData = stockListService.findById(id);
+        ThousandsSeparatorResponse partData = new ThousandsSeparatorResponse(getData);
         return ResponseEntity.ok(partData);
+    }
+
+    @ExceptionHandler(value = NotFoundException.class)
+    public ResponseEntity<Map<String, String>> handleNoResourceFound(
+            NotFoundException e, HttpServletRequest request) {
+        Map<String, String> body = Map.of(
+                "timestamp", ZonedDateTime.now().toString(),
+                "status", String.valueOf(HttpStatus.NOT_FOUND.value()),
+                "error", HttpStatus.NOT_FOUND.getReasonPhrase(),
+                "message", e.getMessage(),
+                "path", request.getRequestURI());
+        return new ResponseEntity(body, HttpStatus.NOT_FOUND);
     }
 
 }

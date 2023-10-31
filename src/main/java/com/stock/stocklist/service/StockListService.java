@@ -1,13 +1,13 @@
 package com.stock.stocklist.service;
 
 import com.stock.stocklist.entity.StockList;
+import com.stock.stocklist.exception.NotFoundException;
 import com.stock.stocklist.mapper.StockListMapper;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 @Getter
@@ -25,12 +25,15 @@ public class StockListService {
             getData = stockListMapper.findAll();
         } else {
             getData = stockListMapper.findByName(name);
+            if (getData.isEmpty()) {
+                throw new NotFoundException("data not found");
+            }
         }
         return getData;
     }
 
-    public Optional<StockList> findById(int id) {
-        return stockListMapper.findById(id);
+    public StockList findById(int id) {
+        return stockListMapper.findById(id).orElseThrow(() -> new NotFoundException("data not found"));
     }
 
 }
