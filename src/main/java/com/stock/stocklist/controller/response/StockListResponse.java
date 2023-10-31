@@ -4,7 +4,7 @@ import com.stock.stocklist.entity.StockList;
 
 import java.time.LocalDate;
 
-public class SeparatorResponse {
+public class StockListResponse {
     private int id;
     private String name;
     private String grade;
@@ -12,7 +12,7 @@ public class SeparatorResponse {
     private String unit;
     private LocalDate purchase;
 
-    public SeparatorResponse(StockList stockList) {
+    public StockListResponse(StockList stockList) {
         this.id = stockList.getId();
         this.name = stockList.getName();
         this.grade = stockList.getGrade();
@@ -33,6 +33,7 @@ public class SeparatorResponse {
         return grade;
     }
 
+    //3桁区切りで表示する処理を記載
     public String getQuantity() {
         String thousandsSeparator = String.format("%,d", quantity);
         return thousandsSeparator;
