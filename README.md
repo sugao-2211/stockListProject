@@ -82,6 +82,7 @@
       ```
       硝酸のエンコード：%E7%A1%9D%E9%85%B8
     - 実行結果
+      <img width="1015" alt="スクリーンショット 2023-10-31 16 18 45" src="https://github.com/sugao-2211/stockListProject/assets/141313076/41c3481b-f62f-4f1e-8a0e-896d132e9ba3">
 
 ##
 
@@ -101,6 +102,8 @@
       curl --location 'http://localhost:8080/stockList/9'
       ```
     - 実行結果
+      <img width="1004" alt="スクリーンショット 2023-10-31 16 17 58" src="https://github.com/sugao-2211/stockListProject/assets/141313076/119ed0ee-64ee-447a-befc-c185ded3dc94">
+
 
 ***
 
