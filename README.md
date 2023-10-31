@@ -2,11 +2,10 @@
 
 ### 概要
 
-消耗品の在庫一覧のプログラムを作成しました。  
-今回は試験研究などで使用される試薬を題材にして  
-在庫一覧表を作成しました。
+消耗品の在庫一覧についてAPIを作成しました。  
+今回は試験研究などで使用される試薬を題材にして在庫一覧表を作成しました。
 
-プログラムの内容
+APIの内容
 
 - Read処理
     - 全件検索及び部分一致検索(クエリパラメータ)の実装
@@ -45,20 +44,31 @@
 
 - 全件検索
     - curlコマンド
-
+      ```
+      curl --location 'http://localhost:8080/stockList'
+      ```
     - 実行結果
+<img width="1012" alt="スクリーンショット 2023-10-31 13 33 02" src="https://github.com/sugao-2211/stockListProject/assets/141313076/028da7e0-c77a-4c33-acfc-0e05c0a5d1bd">
+<img width="1010" alt="スクリーンショット 2023-10-31 13 33 23" src="https://github.com/sugao-2211/stockListProject/assets/141313076/a0430fdd-3ffd-4595-8ce0-2f9176e4b1a2">
 
 
 - 部分一致検索(クエリパラメータ検索)
     - curlコマンド
-
+      ```
+      curl --location 'http://localhost:8080/stockList?name=%E7%A1%AB%E9%85%B8'
+      ```
+      硫酸のエンコード：%E7%A1%AB%E9%85%B8
     - 実行結果
-
+<img width="1014" alt="スクリーンショット 2023-10-31 13 36 14" src="https://github.com/sugao-2211/stockListProject/assets/141313076/8431d332-9193-43a1-ba17-0da8de9caaa8">  
 
 - id検索(パスパラメータ検索)
     - curlコマンド
+      ```
+      curl --location 'http://localhost:8080/stockList/4'
+      ```
+    - 実行結果  
+<img width="1020" alt="スクリーンショット 2023-10-31 14 14 18" src="https://github.com/sugao-2211/stockListProject/assets/141313076/74df72a1-4d08-4210-b0de-8ceb9c2e8a3d">
 
-    - 実行結果
 
 ***
 
