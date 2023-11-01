@@ -5,6 +5,7 @@ import com.stock.stocklist.entity.StockList;
 import com.stock.stocklist.exception.NotFoundException;
 import com.stock.stocklist.service.StockListService;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,13 +18,10 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequiredArgsConstructor
 public class StockListController {
 
     private final StockListService stockListService;
-
-    public StockListController(StockListService stockListService) {
-        this.stockListService = stockListService;
-    }
 
     @GetMapping("/stockList")
     public ResponseEntity<List<StockListResponse>> findData(String name) {
