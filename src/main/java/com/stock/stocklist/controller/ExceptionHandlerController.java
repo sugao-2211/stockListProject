@@ -4,7 +4,6 @@ import com.stock.stocklist.exception.NotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -39,7 +38,35 @@ public class ExceptionHandlerController {
             error.put("message", fieldError.getDefaultMessage());
             errors.add(error);
         });
-        return new ResponseEntity(errors, HttpStatus.BAD_REQUEST);
+
+        ErrorResponse errorResponse =
+                new ErrorResponse(HttpStatus.BAD_REQUEST, "validation error", errors);
+        return ResponseEntity.badRequest().body(errorResponse);
     }
 
+    public static final class ErrorResponse {
+        private final HttpStatus status;
+        private final String message;
+        private final List<Map<String, String>> errors;
+
+        public ErrorResponse(HttpStatus status, String message, List<Map<String, String>> errors) {
+            this.status = status;
+            this.message = message;
+            this.errors = errors;
+        }
+
+        public HttpStatus getStatus() {
+            return status;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public List<Map<String, String>> getErrors() {
+            return errors;
+        }
+    }
 }
+
+
