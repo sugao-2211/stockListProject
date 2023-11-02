@@ -32,4 +32,9 @@ public class StockListService {
         return stockListMapper.findById(id).orElseThrow(() -> new NotFoundException("data not found"));
     }
 
+    public StockList insert(StockList stockList) {
+        stockListMapper.insert(stockList);
+        return stockList;
+    }
+
 }
