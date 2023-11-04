@@ -2,8 +2,10 @@ package com.stock.stocklist.controller;
 
 import com.stock.stocklist.exception.NotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -44,6 +46,7 @@ public class ExceptionHandlerController {
         return ResponseEntity.badRequest().body(errorResponse);
     }
 
+    @Getter
     public static final class ErrorResponse {
         private final HttpStatus status;
         private final String message;
@@ -54,19 +57,36 @@ public class ExceptionHandlerController {
             this.message = message;
             this.errors = errors;
         }
+    }
 
-        public HttpStatus getStatus() {
-            return status;
-        }
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<MessageNotReadableResponse> handleHttpMessageNotReadable(HttpMessageNotReadableException e) {
+        List<Map<String, String>> errors = new ArrayList<>();
 
-        public String getMessage() {
-            return message;
-        }
+        Map<String, String> error = new HashMap<>();
+        error.put("message", "入力内容の形式が不適切です。");
+        error.put("status", String.valueOf(HttpStatus.BAD_REQUEST.value()));
+        error.put("field", e.getMessage());
+        errors.add(error);
 
-        public List<Map<String, String>> getErrors() {
-            return errors;
+        MessageNotReadableResponse messageNotReadableResponse
+                = new MessageNotReadableResponse(HttpStatus.BAD_REQUEST, "request error", errors);
+        return ResponseEntity.badRequest().body(messageNotReadableResponse);
+    }
+
+    @Getter
+    public static final class MessageNotReadableResponse {
+        private final HttpStatus status;
+        private final String message;
+        private final List<Map<String, String>> errors;
+
+        public MessageNotReadableResponse(HttpStatus status, String message, List<Map<String, String>> errors) {
+            this.status = status;
+            this.message = message;
+            this.errors = errors;
         }
     }
+
 }
 
 
