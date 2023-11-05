@@ -16,7 +16,11 @@
     - 部分一致検索(クエリパラメータ)の例外処理
     - id検索(パスパラメータ検索)の例外処理
 - Create処理
-    - 今後実装予定
+  - データの登録
+  - 例外処理の確認１ (MethodArgumentNotValidException)
+  - 例外処理の確認２ (MethodArgumentNotValidException)
+  - 例外処理の確認３ (HttpMessageNotReadableException)
+   
 - Update処理
     - 今後実装予定
 - Delete処理
