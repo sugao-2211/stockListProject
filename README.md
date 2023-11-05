@@ -10,16 +10,16 @@
 #### APIの内容
 
 - Read処理
-    - 全件検索及び部分一致検索(クエリパラメータ)の実装
-    - id検索(パスパラメータ検索)の実装
-    - 1000以上の数字を3桁区切りで表示(1,000)する変換処理を実装
-    - 部分一致検索(クエリパラメータ)の例外処理
-    - id検索(パスパラメータ検索)の例外処理
+  - 全件検索及び部分一致検索(クエリパラメータ)の実装
+  - id検索(パスパラメータ検索)の実装
+  - 1000以上の数字を3桁区切りで表示(1,000)する変換処理を実装
+  - 部分一致検索(クエリパラメータ)の例外処理(NotFoundException)
+  - id検索(パスパラメータ検索)の例外処理(NotFoundException)
 - Create処理
-  - データの登録
-  - 例外処理の確認１ (MethodArgumentNotValidException)
-  - 例外処理の確認２ (MethodArgumentNotValidException)
-  - 例外処理の確認３ (HttpMessageNotReadableException)
+  - データ登録処理の実装
+  - データ登録における例外処理の確認１ (MethodArgumentNotValidException)
+  - データ登録における例外処理の確認２ (MethodArgumentNotValidException)
+  - データ登録における例外処理の確認３ (HttpMessageNotReadableException)
    
 - Update処理
     - 今後実装予定
@@ -114,7 +114,7 @@
 
 以下の処理を実行
 
-- データの登録
+- データ登録
     - name: 硫化ナトリウム九水和物
     - grade: 特級
     - quantity: 500
@@ -135,7 +135,7 @@
     - purchaseの形式が誤っている場合
 
 ##
-- データの登録
+- データ登録
   - curlコマンド
      ```
      curl --location 'http://localhost:8080/stockList' \
