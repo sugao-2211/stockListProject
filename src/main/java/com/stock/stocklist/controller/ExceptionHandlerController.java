@@ -61,16 +61,11 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<MessageNotReadableResponse> handleHttpMessageNotReadable(HttpMessageNotReadableException e) {
-        List<Map<String, String>> errors = new ArrayList<>();
-
         Map<String, String> error = new HashMap<>();
-        error.put("message", "入力内容の形式が不適切です。");
-        error.put("status", String.valueOf(HttpStatus.BAD_REQUEST.value()));
-        error.put("field", e.getMessage());
-        errors.add(error);
+        error.put("message", "いずれかの入力形式が正しくありません。");
 
         MessageNotReadableResponse messageNotReadableResponse
-                = new MessageNotReadableResponse(HttpStatus.BAD_REQUEST, "request error", errors);
+                = new MessageNotReadableResponse(HttpStatus.BAD_REQUEST, "request error", error);
         return ResponseEntity.badRequest().body(messageNotReadableResponse);
     }
 
@@ -78,12 +73,12 @@ public class ExceptionHandlerController {
     public static final class MessageNotReadableResponse {
         private final HttpStatus status;
         private final String message;
-        private final List<Map<String, String>> errors;
+        private final Map<String, String> error;
 
-        public MessageNotReadableResponse(HttpStatus status, String message, List<Map<String, String>> errors) {
+        public MessageNotReadableResponse(HttpStatus status, String message, Map<String, String> error) {
             this.status = status;
             this.message = message;
-            this.errors = errors;
+            this.error = error;
         }
     }
 
