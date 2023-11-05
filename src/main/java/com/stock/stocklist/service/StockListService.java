@@ -37,4 +37,9 @@ public class StockListService {
         return stockList;
     }
 
+    public StockList update(StockList stockList) {
+        stockListMapper.update(stockList);
+        return stockList;
+    }
+
 }
