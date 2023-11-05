@@ -131,8 +131,8 @@
     - purchaseの形式が誤っている場合
 
 ##
-
-- curlコマンド
+- データの登録
+  - curlコマンド
      ```
      curl --location 'http://localhost:8080/stockList' \
      --header 'Content-Type: application/json' \
@@ -144,26 +144,25 @@
       "purchase": "2023-08-12"
      }'
      ```
-    - 実行結果
+  - 実行結果(Postman)  
+     <img width="691" alt="スクリーンショット 2023-11-05 13 06 03" src="https://github.com/sugao-2211/stockListProject/assets/141313076/f84deb46-5425-46b1-8bf1-01d9c3dc9303">
+  - 実行結果(SQL)  
+    <img width="826" alt="スクリーンショット 2023-11-05 13 08 49" src="https://github.com/sugao-2211/stockListProject/assets/141313076/deedd02d-ccd9-4d28-a66d-6ecb76309742">
 
 ##
 
 ### 例外処理の確認
 
-バリデーションは以下のように設定  
-https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/request/InsertRequest.java
+- バリデーションは以下のコードを記述  
+https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/request/InsertRequest.java#L17-L34
 
-また、例外処理は以下のクラスに記述  
-https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java
+- 例外処理は以下のコードで実施
+https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L34-L47 
 
-例外処理は以下の内容で行う。
-
-- @DateTimeFormat(pattern = "yyyy-MM-dd")以外は  
-  MethodArgumentNotValidExceptionで処理する。
-- @DateTimeFormat(pattern = "yyyy-MM-dd")は  
-  HttpMessageNotReadableExceptionで処理する。
-- quantityの入力内容がint型に合致しない場合は  
-  HttpMessageNotReadableExceptionで処理する。
+- 例外処理は以下の内容で実施した。
+  - `@DateTimeFormat(pattern = "yyyy-MM-dd")`以外は`MethodArgumentNotValidException`で処理する。
+  - `@DateTimeFormat(pattern = "yyyy-MM-dd")`は`HttpMessageNotReadableException`で処理する。
+  - `quantity`の入力内容が`int`型に合致しない場合は`HttpMessageNotReadableException`で処理する。
 
 ##
 
@@ -173,15 +172,17 @@ https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cd
     - quantityを0で入力
     - unitを空文字で入力
     - purchaseを空文字で入力
-- 実行結果
+- 実行結果  
+  <img width="698" alt="スクリーンショット 2023-11-05 12 47 10" src="https://github.com/sugao-2211/stockListProject/assets/141313076/d60e9ff2-3005-41eb-913a-0e91e7029c4f">
+  <img width="698" alt="スクリーンショット 2023-11-05 12 47 34" src="https://github.com/sugao-2211/stockListProject/assets/141313076/6933dd4f-d607-4456-8a87-fb43a2045db5">
 
 ##
 
 - 例外処理の確認２ (MethodArgumentNotValidException)
     - nameを101文字で入力
     - purchaseを未来の日付で入力
-
-- 実行結果
+- 実行結果  
+  <img width="885" alt="スクリーンショット 2023-11-05 12 49 22" src="https://github.com/sugao-2211/stockListProject/assets/141313076/9204af1f-0034-421b-ae5e-c00c1b3f677e">
 
 ##
 
@@ -189,8 +190,13 @@ https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cd
     - quantityを文字列で入力した場合
     - quantityを小数で入力した場合
     - purchaseの形式が誤っている場合
-
 - 実行結果
+  - quantityを文字列で入力した場合  
+  <img width="683" alt="スクリーンショット 2023-11-05 13 04 41" src="https://github.com/sugao-2211/stockListProject/assets/141313076/c52d7c6e-07c4-4d81-b8f4-771da0292d74"><br>
+  - quantityを小数で入力した場合  
+  <img width="685" alt="スクリーンショット 2023-11-05 13 43 55" src="https://github.com/sugao-2211/stockListProject/assets/141313076/d68623c7-851a-4945-bca2-cd2762c7a181"><br> 
+  - purchaseの形式が誤っている場合  
+  <img width="695" alt="スクリーンショット 2023-11-05 12 56 09" src="https://github.com/sugao-2211/stockListProject/assets/141313076/5b48d694-eade-4281-bbc2-bb9357874bb2"><br>
 
 ***
 
