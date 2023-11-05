@@ -161,12 +161,14 @@
 https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/request/InsertRequest.java#L17-L34
 
 - 例外処理は以下のコードで実施
-https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L34-L47 
+https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L34-L47  
+https://github.com/sugao-2211/stockListProject/blob/cd34c4b35a55664394e89476c91cc0b2ff8e74fe/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L62-L70
 
-- 例外処理は以下の内容で実施した。
-  - `@DateTimeFormat(pattern = "yyyy-MM-dd")`以外は`MethodArgumentNotValidException`で処理する。
-  - `@DateTimeFormat(pattern = "yyyy-MM-dd")`は`HttpMessageNotReadableException`で処理する。
-  - `quantity`の入力内容が`int`型に合致しない場合は`HttpMessageNotReadableException`で処理する。
+
+- 例外処理は以下の内容で実施。
+  - `@DateTimeFormat(pattern = "yyyy-MM-dd")`以外は`MethodArgumentNotValidException`で処理。
+  - `@DateTimeFormat(pattern = "yyyy-MM-dd")`は`HttpMessageNotReadableException`で処理。
+  - `quantity`の入力内容が`int`型に合致しない場合は`HttpMessageNotReadableException`で処理。
 
 ##
 
