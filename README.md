@@ -104,10 +104,93 @@
     - 実行結果
       <img width="1004" alt="スクリーンショット 2023-10-31 16 17 58" src="https://github.com/sugao-2211/stockListProject/assets/141313076/119ed0ee-64ee-447a-befc-c185ded3dc94">
 
-
 ***
 
 ### Create処理の実装
+
+以下の処理を実行
+
+- データの登録
+    - name: 硫化ナトリウム九水和物
+    - grade: 特級
+    - quantity: 500
+    - unit: g
+    - purchase: 2023-08-12
+- 例外処理の確認１ (MethodArgumentNotValidException)
+    - nameを空文字で入力
+    - gradeを空文字で入力
+    - quantityを0で入力
+    - unitを空文字で入力
+    - purchaseを空文字で入力
+- 例外処理の確認２ (MethodArgumentNotValidException)
+    - nameを101文字で入力
+    - purchaseを未来の日付で入力
+- 例外処理の確認３ (HttpMessageNotReadableException)
+    - quantityを文字列で入力した場合
+    - quantityを小数で入力した場合
+    - purchaseの形式が誤っている場合
+
+##
+
+- curlコマンド
+     ```
+     curl --location 'http://localhost:8080/stockList' \
+     --header 'Content-Type: application/json' \
+     --data '{
+      "name": "硫化ナトリウム九水和物",
+      "grade": "特級",
+      "quantity": "500",
+      "unit": "g",
+      "purchase": "2023-08-12"
+     }'
+     ```
+    - 実行結果
+
+##
+
+### 例外処理の確認
+
+バリデーションは以下のように設定  
+https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/request/InsertRequest.java
+
+また、例外処理は以下のクラスに記述  
+https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java
+
+例外処理は以下の内容で行う。
+
+- @DateTimeFormat(pattern = "yyyy-MM-dd")以外は  
+  MethodArgumentNotValidExceptionで処理する。
+- @DateTimeFormat(pattern = "yyyy-MM-dd")は  
+  HttpMessageNotReadableExceptionで処理する。
+- quantityの入力内容がint型に合致しない場合は  
+  HttpMessageNotReadableExceptionで処理する。
+
+##
+
+- 例外処理の確認１ (MethodArgumentNotValidException)
+    - nameを空文字で入力
+    - gradeを空文字で入力
+    - quantityを0で入力
+    - unitを空文字で入力
+    - purchaseを空文字で入力
+- 実行結果
+
+##
+
+- 例外処理の確認２ (MethodArgumentNotValidException)
+    - nameを101文字で入力
+    - purchaseを未来の日付で入力
+
+- 実行結果
+
+##
+
+- 例外処理の確認３ (HttpMessageNotReadableException)
+    - quantityを文字列で入力した場合
+    - quantityを小数で入力した場合
+    - purchaseの形式が誤っている場合
+
+- 実行結果
 
 ***
 
