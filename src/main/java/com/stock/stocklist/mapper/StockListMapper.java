@@ -27,6 +27,6 @@ public interface StockListMapper {
     void insert(StockList stocklist);
 
     @Update("update stock_list set name = #{name}, grade = #{grade}, quantity = #{quantity}, unit = #{unit}, purchase = #{purchase} where id = #{id}")
-    void update(StockList stocklist);
+    void update(StockList stockList);
 
 }

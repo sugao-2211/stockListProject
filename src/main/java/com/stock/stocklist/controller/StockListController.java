@@ -49,7 +49,7 @@ public class StockListController {
     }
 
     @PatchMapping("/stockList/{id}")
-    public ResponseEntity<MessageResponse> update(@PathVariable Integer id, @RequestBody UpdateRequest updateRequest) {
+    public ResponseEntity<MessageResponse> update(@PathVariable Integer id, @RequestBody @Validated UpdateRequest updateRequest) {
         StockList updateData = stockListService.update(updateRequest.convertToStockList(id));
         MessageResponse message = new MessageResponse("data Updated");
         return ResponseEntity.ok(message);

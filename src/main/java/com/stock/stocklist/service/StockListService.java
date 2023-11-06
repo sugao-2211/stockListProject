@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -39,6 +40,10 @@ public class StockListService {
 
     public StockList update(StockList stockList) {
         stockListMapper.update(stockList);
+        Optional<StockList> updatedStockList = stockListMapper.findById(stockList.getId());
+        if (updatedStockList.isEmpty()) {
+            throw new NotFoundException("data not found");
+        }
         return stockList;
     }
 
