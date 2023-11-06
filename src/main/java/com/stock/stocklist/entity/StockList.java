@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 public class StockList {
 
-    private int id;
+    private Integer id;
     private String name;
     private String grade;
     private int quantity;
     private String unit;
     private LocalDate purchase;
 
-    public StockList(int id, String name, String grade, int quantity, String unit, LocalDate purchase) {
+    public StockList(Integer id, String name, String grade, int quantity, String unit, LocalDate purchase) {
         this.id = id;
         this.name = name;
         this.grade = grade;
