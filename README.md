@@ -51,14 +51,14 @@
 以下の処理を実行
 
 - データベース全件検索
-- クエリパラメータ(name)に合致するものを部分一致検索  
-  「硫酸」で検索
-- クエリパラメータ(name)の部分一致検索における例外処理  
-  「硝酸」で検索し例外処理を発生
-- パスパラメータ(id)に合致するものを検索  
-  id「4」で検索
-- パスパラメータ(id)の検索における例外処理  
-  id「9」で検索し例外処理を発生
+- クエリパラメータ(name)に合致するものを部分一致検索
+    - 「硫酸」で検索
+- クエリパラメータ(name)の部分一致検索における例外処理
+    - 「硝酸」で検索し例外処理を発生
+- パスパラメータ(id)に合致するものを検索
+    - id「4」で検索
+- パスパラメータ(id)の検索における例外処理
+    - id「9」で検索し例外処理を発生
 
 ##
 
@@ -167,7 +167,7 @@
 - バリデーションは以下のコードを記述  
   https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/request/InsertRequest.java#L17-L34
 
-- 例外処理は以下のコードで実施
+- 例外処理は以下のコードで実施  
   https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L34-L47  
   https://github.com/sugao-2211/stockListProject/blob/cd34c4b35a55664394e89476c91cc0b2ff8e74fe/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L62-L70
 
@@ -274,7 +274,7 @@
 - バリデーションは以下のコードを記述  
   https://github.com/sugao-2211/stockListProject/blob/cbc95ec5c3e328702519e88b0b54de0de67e26f9/src/main/java/com/stock/stocklist/controller/request/UpdateRequest.java#L17-L34
 
-- 例外処理は以下のコードで実施
+- 例外処理は以下のコードで実施  
   https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L22-L47  
   https://github.com/sugao-2211/stockListProject/blob/cd34c4b35a55664394e89476c91cc0b2ff8e74fe/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L62-L70
 
@@ -300,7 +300,7 @@
     - quantityを空文字で入力
     - unitを空文字で入力
     - purchaseを空文字で入力
-- 実行結果
+- 実行結果  
   <img width="687" alt="スクリーンショット 2023-11-07 21 19 45" src="https://github.com/sugao-2211/stockListProject/assets/141313076/a8e59c55-dede-4e8b-8afa-7bc17a9087bc">
   <img width="693" alt="スクリーンショット 2023-11-07 21 20 02" src="https://github.com/sugao-2211/stockListProject/assets/141313076/0a599f62-7302-41d2-910a-47d8d4191a8a">
 
