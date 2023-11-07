@@ -22,7 +22,12 @@
     - データ登録における例外処理の確認３ (HttpMessageNotReadableException)
 
 - Update処理
-    - 今後実装予定
+    - データ登録処理の実装
+    - データ登録における例外処理の確認１ (NotFoundException)
+    - データ登録における例外処理の確認２ (MethodArgumentNotValidException)
+    - データ登録における例外処理の確認３ (MethodArgumentNotValidException)
+    - データ登録における例外処理の確認４ (HttpMessageNotReadableException)
+
 - Delete処理
     - 今後実装予定
 
@@ -217,7 +222,7 @@
 
 以下の処理を実行
 
-- データ登録
+- データ更新
     - id: 1
     - name: エタノール(95)
     - grade: 特級
@@ -243,7 +248,7 @@
 
 ##
 
-- データ登録
+- データ更新
     - curlコマンド
        ```
       curl --location --request PATCH 'http://localhost:8080/stockList/1' \
@@ -267,10 +272,10 @@
 ### 例外処理の確認
 
 - バリデーションは以下のコードを記述  
-  https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/request/InsertRequest.java#L17-L34
+  https://github.com/sugao-2211/stockListProject/blob/cbc95ec5c3e328702519e88b0b54de0de67e26f9/src/main/java/com/stock/stocklist/controller/request/UpdateRequest.java#L17-L34
 
 - 例外処理は以下のコードで実施
-  https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L34-L47  
+  https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L22-L47  
   https://github.com/sugao-2211/stockListProject/blob/cd34c4b35a55664394e89476c91cc0b2ff8e74fe/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L62-L70
 
 - 例外処理は以下の内容で実施。
