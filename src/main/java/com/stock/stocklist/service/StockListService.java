@@ -39,9 +39,10 @@ public class StockListService {
     }
 
     public StockList update(StockList stockList) {
-        stockListMapper.update(stockList);
         Optional<StockList> updatedStockList = stockListMapper.findById(stockList.getId());
-        if (updatedStockList.isEmpty()) {
+        if (updatedStockList.isPresent()) {
+            stockListMapper.update(stockList);
+        } else {
             throw new NotFoundException("data not found");
         }
         return stockList;
