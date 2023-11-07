@@ -21,7 +21,7 @@ public class UpdateRequest {
     @NotBlank(message = "等級が入力されていません")
     private String grade;
 
-    @NotNull(message = "数量が入力されていません")
+    @NotNull
     @Min(value = 1, message = "{value}以上の値を入力してください")
     private int quantity;
 
