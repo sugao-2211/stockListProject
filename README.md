@@ -22,14 +22,15 @@
     - データ登録における例外処理の確認３ (HttpMessageNotReadableException)
 
 - Update処理
-    - データ登録処理の実装
-    - データ登録における例外処理の確認１ (NotFoundException)
-    - データ登録における例外処理の確認２ (MethodArgumentNotValidException)
-    - データ登録における例外処理の確認３ (MethodArgumentNotValidException)
-    - データ登録における例外処理の確認４ (HttpMessageNotReadableException)
+    - データ更新処理の実装
+    - データ更新における例外処理の確認１ (NotFoundException)
+    - データ更新における例外処理の確認２ (MethodArgumentNotValidException)
+    - データ更新における例外処理の確認３ (MethodArgumentNotValidException)
+    - データ更新における例外処理の確認４ (HttpMessageNotReadableException)
 
 - Delete処理
-    - 今後実装予定
+    - データ削除処理の実装
+    - データ削除における例外処理の確認 (NotFoundException)
 
 ##
 
@@ -262,10 +263,10 @@
       }'
       ```
 
-- 実行結果(Postman)
-  <img width="693" alt="スクリーンショット 2023-11-07 21 14 47" src="https://github.com/sugao-2211/stockListProject/assets/141313076/3ccbd7a4-f68b-4504-ad90-8cf386c0b6c5">
-- 実行結果(SQL)  
-  <img width="782" alt="スクリーンショット 2023-11-07 21 16 45" src="https://github.com/sugao-2211/stockListProject/assets/141313076/0e7b6266-0dd9-484b-9f60-5418cd5f946f">
+    - 実行結果(Postman)
+      <img width="693" alt="スクリーンショット 2023-11-07 21 14 47" src="https://github.com/sugao-2211/stockListProject/assets/141313076/3ccbd7a4-f68b-4504-ad90-8cf386c0b6c5">
+    - 実行結果(SQL)  
+      <img width="782" alt="スクリーンショット 2023-11-07 21 16 45" src="https://github.com/sugao-2211/stockListProject/assets/141313076/0e7b6266-0dd9-484b-9f60-5418cd5f946f">
 
 ##
 
@@ -331,5 +332,41 @@
 
 ### Delete処理の実装
 
+以下の処理を実行
 
+- データ削除
+    - id: 6
+- 例外処理の確認 (NotFoundException)
+    - 存在しないデータの削除
+
+##
+
+- データ削除
+    - curlコマンド
+   ```
+  curl --location --request DELETE 'http://localhost:8080/stockList/6' \
+  --data ''
+  ```
+
+    - 実行結果(Postman)
+      <img width="689" alt="スクリーンショット 2023-11-08 22 36 30" src="https://github.com/sugao-2211/stockListProject/assets/141313076/769745c6-1a3f-48ee-9837-7d70f210cf28">
+    - 実行結果(SQL)
+      <img width="777" alt="スクリーンショット 2023-11-08 22 36 57" src="https://github.com/sugao-2211/stockListProject/assets/141313076/ee90d844-2424-4f04-aa09-e2378f1aba4c">
+
+##
+
+### 例外処理の確認
+
+- 例外処理は以下のコードで実施
+
+
+- 例外処理は以下の内容で実施。
+    - 存在しないデータを更新しようとした場合に`NotFoundException`で処理
+
+##
+
+- 例外処理の確認 (NotFoundException)
+    - 存在しないデータの削除(id：99を削除するリクエスト)
+- 実行結果  
+  <img width="689" alt="スクリーンショット 2023-11-08 22 44 02" src="https://github.com/sugao-2211/stockListProject/assets/141313076/a959bd7f-0efc-4dda-8599-0af476b6e734">
 

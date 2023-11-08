@@ -31,6 +31,6 @@ public interface StockListMapper {
     void update(StockList stockList);
 
     @Delete("delete from stock_list WHERE id = #{id}")
-    int delete(Integer id);
+    void delete(Integer id);
 
 }
