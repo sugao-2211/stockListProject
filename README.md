@@ -357,8 +357,8 @@
 
 ### 例外処理の確認
 
-- 例外処理は以下のコードで実施
-
+- 例外処理は以下のコードで実施  
+  https://github.com/sugao-2211/stockListProject/blob/4f22c0856b96f510d6836cab8f6cdef711aa1d53/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L22-L32
 
 - 例外処理は以下の内容で実施。
     - 存在しないデータを更新しようとした場合に`NotFoundException`で処理
