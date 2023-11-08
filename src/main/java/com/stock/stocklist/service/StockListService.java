@@ -48,4 +48,14 @@ public class StockListService {
         return stockList;
     }
 
+    public Integer delete(Integer id) {
+        Optional<StockList> updatedStockList = stockListMapper.findById(id);
+        if (updatedStockList.isPresent()) {
+            stockListMapper.delete(id);
+        } else {
+            throw new NotFoundException("data not found");
+        }
+        return id;
+    }
+
 }

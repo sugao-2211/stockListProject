@@ -1,6 +1,7 @@
 package com.stock.stocklist.mapper;
 
 import com.stock.stocklist.entity.StockList;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -28,5 +29,8 @@ public interface StockListMapper {
 
     @Update("update stock_list set name = #{name}, grade = #{grade}, quantity = #{quantity}, unit = #{unit}, purchase = #{purchase} where id = #{id}")
     void update(StockList stockList);
+
+    @Delete("delete from stock_list WHERE id = #{id}")
+    int delete(Integer id);
 
 }

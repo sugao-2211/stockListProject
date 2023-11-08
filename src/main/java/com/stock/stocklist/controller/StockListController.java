@@ -9,6 +9,7 @@ import com.stock.stocklist.service.StockListService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,6 +53,13 @@ public class StockListController {
     public ResponseEntity<MessageResponse> update(@PathVariable Integer id, @RequestBody @Validated UpdateRequest updateRequest) {
         stockListService.update(updateRequest.convertToStockList(id));
         MessageResponse message = new MessageResponse("data Updated");
+        return ResponseEntity.ok(message);
+    }
+
+    @DeleteMapping("/stockList/{id}")
+    public ResponseEntity<MessageResponse> delete(@PathVariable Integer id) {
+        stockListService.delete(id);
+        MessageResponse message = new MessageResponse("data Deleted");
         return ResponseEntity.ok(message);
     }
 
