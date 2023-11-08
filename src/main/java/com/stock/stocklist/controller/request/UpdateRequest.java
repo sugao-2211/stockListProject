@@ -12,7 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 
 @AllArgsConstructor
-public class InsertRequest {
+public class UpdateRequest {
 
     @NotBlank(message = "試薬名が入力されていません")
     @Length(min = 1, max = 100, message = "{min}文字以上、{max}文字以内で入力してください")
@@ -33,8 +33,8 @@ public class InsertRequest {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate purchase;
 
-    public StockList convertToStockList() {
-        StockList convert = new StockList(null, name, grade, quantity, unit, purchase);
+    public StockList convertToStockList(Integer id) {
+        StockList convert = new StockList(id, name, grade, quantity, unit, purchase);
         return convert;
     }
 

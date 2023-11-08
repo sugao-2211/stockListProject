@@ -10,19 +10,24 @@
 #### APIの内容
 
 - Read処理
-  - 全件検索及び部分一致検索(クエリパラメータ)の実装
-  - id検索(パスパラメータ検索)の実装
-  - 1000以上の数字を3桁区切りで表示(1,000)する変換処理を実装
-  - 部分一致検索(クエリパラメータ)の例外処理(NotFoundException)
-  - id検索(パスパラメータ検索)の例外処理(NotFoundException)
+    - 全件検索及び部分一致検索(クエリパラメータ)の実装
+    - id検索(パスパラメータ検索)の実装
+    - 1000以上の数字を3桁区切りで表示(1,000)する変換処理を実装
+    - 部分一致検索(クエリパラメータ)の例外処理(NotFoundException)
+    - id検索(パスパラメータ検索)の例外処理(NotFoundException)
 - Create処理
-  - データ登録処理の実装
-  - データ登録における例外処理の確認１ (MethodArgumentNotValidException)
-  - データ登録における例外処理の確認２ (MethodArgumentNotValidException)
-  - データ登録における例外処理の確認３ (HttpMessageNotReadableException)
-   
+    - データ登録処理の実装
+    - データ登録における例外処理の確認１ (MethodArgumentNotValidException)
+    - データ登録における例外処理の確認２ (MethodArgumentNotValidException)
+    - データ登録における例外処理の確認３ (HttpMessageNotReadableException)
+
 - Update処理
-    - 今後実装予定
+    - データ登録処理の実装
+    - データ登録における例外処理の確認１ (NotFoundException)
+    - データ登録における例外処理の確認２ (MethodArgumentNotValidException)
+    - データ登録における例外処理の確認３ (MethodArgumentNotValidException)
+    - データ登録における例外処理の確認４ (HttpMessageNotReadableException)
+
 - Delete処理
     - 今後実装予定
 
@@ -46,14 +51,14 @@
 以下の処理を実行
 
 - データベース全件検索
-- クエリパラメータ(name)に合致するものを部分一致検索  
-  「硫酸」で検索
-- クエリパラメータ(name)の部分一致検索における例外処理  
-  「硝酸」で検索し例外処理を発生
-- パスパラメータ(id)に合致するものを検索  
-  id「4」で検索
-- パスパラメータ(id)の検索における例外処理  
-  id「9」で検索し例外処理を発生
+- クエリパラメータ(name)に合致するものを部分一致検索
+    - 「硫酸」で検索
+- クエリパラメータ(name)の部分一致検索における例外処理
+    - 「硝酸」で検索し例外処理を発生
+- パスパラメータ(id)に合致するものを検索
+    - id「4」で検索
+- パスパラメータ(id)の検索における例外処理
+    - id「9」で検索し例外処理を発生
 
 ##
 
@@ -129,46 +134,48 @@
 - 例外処理の確認２ (MethodArgumentNotValidException)
     - nameを101文字で入力
     - purchaseを未来の日付で入力
+    - quantityを空文字で入力
 - 例外処理の確認３ (HttpMessageNotReadableException)
     - quantityを文字列で入力した場合
     - quantityを小数で入力した場合
     - purchaseの形式が誤っている場合
 
 ##
+
 - データ登録
-  - curlコマンド
-     ```
-     curl --location 'http://localhost:8080/stockList' \
-     --header 'Content-Type: application/json' \
-     --data '{
-      "name": "硫化ナトリウム九水和物",
-      "grade": "特級",
-      "quantity": "500",
-      "unit": "g",
-      "purchase": "2023-08-12"
-     }'
-     ```
-  - 実行結果(Postman)  
-     <img width="691" alt="スクリーンショット 2023-11-05 13 06 03" src="https://github.com/sugao-2211/stockListProject/assets/141313076/f84deb46-5425-46b1-8bf1-01d9c3dc9303">
-  - 実行結果(SQL)  
-    <img width="826" alt="スクリーンショット 2023-11-05 13 08 49" src="https://github.com/sugao-2211/stockListProject/assets/141313076/deedd02d-ccd9-4d28-a66d-6ecb76309742">
+    - curlコマンド
+       ```
+       curl --location 'http://localhost:8080/stockList' \
+       --header 'Content-Type: application/json' \
+       --data '{
+        "name": "硫化ナトリウム九水和物",
+        "grade": "特級",
+        "quantity": "500",
+        "unit": "g",
+        "purchase": "2023-08-12"
+       }'
+       ```
+    - 実行結果(Postman)  
+      <img width="691" alt="スクリーンショット 2023-11-05 13 06 03" src="https://github.com/sugao-2211/stockListProject/assets/141313076/f84deb46-5425-46b1-8bf1-01d9c3dc9303">
+    - 実行結果(SQL)  
+      <img width="826" alt="スクリーンショット 2023-11-05 13 08 49" src="https://github.com/sugao-2211/stockListProject/assets/141313076/deedd02d-ccd9-4d28-a66d-6ecb76309742">
 
 ##
 
 ### 例外処理の確認
 
 - バリデーションは以下のコードを記述  
-https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/request/InsertRequest.java#L17-L34
+  https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/request/InsertRequest.java#L17-L34
 
-- 例外処理は以下のコードで実施
-https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L34-L47  
-https://github.com/sugao-2211/stockListProject/blob/cd34c4b35a55664394e89476c91cc0b2ff8e74fe/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L62-L70
+- 例外処理は以下のコードで実施  
+  https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L34-L47  
+  https://github.com/sugao-2211/stockListProject/blob/cd34c4b35a55664394e89476c91cc0b2ff8e74fe/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L62-L70
 
 
 - 例外処理は以下の内容で実施。
-  - `@DateTimeFormat(pattern = "yyyy-MM-dd")`以外は`MethodArgumentNotValidException`で処理。
-  - `@DateTimeFormat(pattern = "yyyy-MM-dd")`は`HttpMessageNotReadableException`で処理。
-  - `quantity`の入力内容が`int`型に合致しない場合は`HttpMessageNotReadableException`で処理。
+    - `@DateTimeFormat(pattern = "yyyy-MM-dd")`以外は`MethodArgumentNotValidException`で処理。
+    - `@DateTimeFormat(pattern = "yyyy-MM-dd")`は`HttpMessageNotReadableException`で処理。
+    - `quantity`の入力内容が`int`型に合致しない場合は`HttpMessageNotReadableException`で処理。
 
 ##
 
@@ -187,8 +194,13 @@ https://github.com/sugao-2211/stockListProject/blob/cd34c4b35a55664394e89476c91c
 - 例外処理の確認２ (MethodArgumentNotValidException)
     - nameを101文字で入力
     - purchaseを未来の日付で入力
-- 実行結果  
-  <img width="885" alt="スクリーンショット 2023-11-05 12 49 22" src="https://github.com/sugao-2211/stockListProject/assets/141313076/9204af1f-0034-421b-ae5e-c00c1b3f677e">
+    - quantityを空文字で入力
+- 実行結果
+    - nameを101文字で入力
+    - purchaseを未来の日付で入力
+      <img width="885" alt="スクリーンショット 2023-11-05 12 49 22" src="https://github.com/sugao-2211/stockListProject/assets/141313076/9204af1f-0034-421b-ae5e-c00c1b3f677e">
+    - quantityを空文字で入力
+      <img width="693" alt="スクリーンショット 2023-11-07 21 37 53" src="https://github.com/sugao-2211/stockListProject/assets/141313076/6a47363d-7592-450a-8e68-c14c99acf10a">
 
 ##
 
@@ -197,16 +209,123 @@ https://github.com/sugao-2211/stockListProject/blob/cd34c4b35a55664394e89476c91c
     - quantityを小数で入力した場合
     - purchaseの形式が誤っている場合
 - 実行結果
-  - quantityを文字列で入力した場合  
-  <img width="683" alt="スクリーンショット 2023-11-05 13 04 41" src="https://github.com/sugao-2211/stockListProject/assets/141313076/c52d7c6e-07c4-4d81-b8f4-771da0292d74"><br>
-  - quantityを小数で入力した場合  
-  <img width="685" alt="スクリーンショット 2023-11-05 13 43 55" src="https://github.com/sugao-2211/stockListProject/assets/141313076/d68623c7-851a-4945-bca2-cd2762c7a181"><br> 
-  - purchaseの形式が誤っている場合  
-  <img width="695" alt="スクリーンショット 2023-11-05 12 56 09" src="https://github.com/sugao-2211/stockListProject/assets/141313076/5b48d694-eade-4281-bbc2-bb9357874bb2"><br>
+    - quantityを文字列で入力した場合  
+      <img width="683" alt="スクリーンショット 2023-11-05 13 04 41" src="https://github.com/sugao-2211/stockListProject/assets/141313076/c52d7c6e-07c4-4d81-b8f4-771da0292d74"><br>
+    - quantityを小数で入力した場合  
+      <img width="685" alt="スクリーンショット 2023-11-05 13 43 55" src="https://github.com/sugao-2211/stockListProject/assets/141313076/d68623c7-851a-4945-bca2-cd2762c7a181"><br>
+    - purchaseの形式が誤っている場合  
+      <img width="695" alt="スクリーンショット 2023-11-05 12 56 09" src="https://github.com/sugao-2211/stockListProject/assets/141313076/5b48d694-eade-4281-bbc2-bb9357874bb2"><br>
 
 ***
 
 ### Update処理の実装
+
+以下の処理を実行
+
+- データ更新
+    - id: 1
+    - name: エタノール(95)
+    - grade: 特級
+    - quantity: 500
+    - unit: ｍL
+    - purchase: 2023-09-30
+- 例外処理の確認１ (NotFoundException)
+    - 存在しないデータの更新
+- 例外処理の確認２ (MethodArgumentNotValidException)
+    - nameを空文字で入力
+    - gradeを空文字で入力
+    - quantityを空文字で入力
+    - unitを空文字で入力
+    - purchaseを空文字で入力
+- 例外処理の確認３ (MethodArgumentNotValidException)
+    - nameを101文字で入力
+    - quantityを0で入力
+    - purchaseを未来の日付で入力
+- 例外処理の確認４ (HttpMessageNotReadableException)
+    - quantityを文字列で入力した場合
+    - quantityを小数で入力した場合
+    - purchaseの形式が誤っている場合
+
+##
+
+- データ更新
+    - curlコマンド
+       ```
+      curl --location --request PATCH 'http://localhost:8080/stockList/1' \
+      --header 'Content-Type: application/json' \
+      --data '{
+        "name": "エタノール(95)",
+        "grade": "特級",
+        "quantity": "500",
+        "unit": "mL",
+        "purchase": "2023-09-30"
+      }'
+      ```
+
+- 実行結果(Postman)
+  <img width="693" alt="スクリーンショット 2023-11-07 21 14 47" src="https://github.com/sugao-2211/stockListProject/assets/141313076/3ccbd7a4-f68b-4504-ad90-8cf386c0b6c5">
+- 実行結果(SQL)  
+  <img width="782" alt="スクリーンショット 2023-11-07 21 16 45" src="https://github.com/sugao-2211/stockListProject/assets/141313076/0e7b6266-0dd9-484b-9f60-5418cd5f946f">
+
+##
+
+### 例外処理の確認
+
+- バリデーションは以下のコードを記述  
+  https://github.com/sugao-2211/stockListProject/blob/cbc95ec5c3e328702519e88b0b54de0de67e26f9/src/main/java/com/stock/stocklist/controller/request/UpdateRequest.java#L17-L34
+
+- 例外処理は以下のコードで実施  
+  https://github.com/sugao-2211/stockListProject/blob/298d4015b43313a869b09a04d2cdf652d1617625/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L22-L47  
+  https://github.com/sugao-2211/stockListProject/blob/cd34c4b35a55664394e89476c91cc0b2ff8e74fe/src/main/java/com/stock/stocklist/controller/ExceptionHandlerController.java#L62-L70
+
+- 例外処理は以下の内容で実施。
+    - 存在しないデータを更新しようとした場合に`NotFoundException`で処理
+    - `@DateTimeFormat(pattern = "yyyy-MM-dd")`以外は`MethodArgumentNotValidException`で処理
+    - `@DateTimeFormat(pattern = "yyyy-MM-dd")`は`HttpMessageNotReadableException`で処理
+    - `quantity`の入力内容が`int`型に合致しない場合は`HttpMessageNotReadableException`で処理
+
+##
+
+- 例外処理の確認１ (NotFoundException)
+    - 存在しないデータの更新(id：99を更新するリクエスト)
+
+- 実行結果  
+  <img width="683" alt="スクリーンショット 2023-11-07 22 03 22" src="https://github.com/sugao-2211/stockListProject/assets/141313076/c47b28bb-8b1c-4d88-8487-f9512ea67a97">
+
+##
+
+- 例外処理の確認２ (MethodArgumentNotValidException)
+    - nameを空文字で入力
+    - gradeを空文字で入力
+    - quantityを空文字で入力
+    - unitを空文字で入力
+    - purchaseを空文字で入力
+- 実行結果  
+  <img width="687" alt="スクリーンショット 2023-11-07 21 19 45" src="https://github.com/sugao-2211/stockListProject/assets/141313076/a8e59c55-dede-4e8b-8afa-7bc17a9087bc">
+  <img width="693" alt="スクリーンショット 2023-11-07 21 20 02" src="https://github.com/sugao-2211/stockListProject/assets/141313076/0a599f62-7302-41d2-910a-47d8d4191a8a">
+
+##
+
+- 例外処理の確認３ (MethodArgumentNotValidException)
+    - nameを101文字で入力
+    - quantityを0で入力
+    - purchaseを未来の日付で入力
+- 実行結果
+  <img width="897" alt="スクリーンショット 2023-11-07 21 34 46" src="https://github.com/sugao-2211/stockListProject/assets/141313076/3ceff859-04f5-4d3b-b3f4-83ee9d98998d">
+
+##
+
+- 例外処理の確認４ (HttpMessageNotReadableException)
+    - quantityを文字列で入力した場合
+    - quantityを小数で入力した場合
+    - purchaseの形式が誤っている場合
+- 実行結果
+    - quantityを文字列で入力した場合  
+      <img width="696" alt="スクリーンショット 2023-11-07 21 30 48" src="https://github.com/sugao-2211/stockListProject/assets/141313076/9842c185-44fc-412c-a0ab-c6cf7e89e139">
+    - quantityを小数で入力した場合
+      <img width="691" alt="スクリーンショット 2023-11-07 21 31 12" src="https://github.com/sugao-2211/stockListProject/assets/141313076/00351f4b-c7d0-4e1d-ada1-78212d21f292">
+    - purchaseの形式が誤っている場合
+      <img width="697" alt="スクリーンショット 2023-11-07 21 31 40" src="https://github.com/sugao-2211/stockListProject/assets/141313076/15cfe396-0ddb-400e-8b34-ef21f7d3e125">
 
 ***
 
