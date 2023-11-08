@@ -14,23 +14,23 @@ import java.util.Optional;
 @Mapper
 public interface StockListMapper {
 
-    @Select("select * from stock_list")
+    @Select("SELECT * FROM stock_list")
     List<StockList> findAll();
 
-    @Select("select * from stock_list where name like concat('%',#{name},'%')")
+    @Select("SELECT * FROM stock_list WHERE name LIKE CONCAT('%',#{name},'%')")
     List<StockList> findByName(String name);
 
-    @Select("select * from stock_list where id = #{id}")
+    @Select("SELECT * FROM stock_list WHERE id = #{id}")
     Optional<StockList> findById(int id);
 
-    @Insert("insert into stock_list (name,grade,quantity,unit,purchase) values (#{name},#{grade},#{quantity},#{unit},#{purchase})")
+    @Insert("INSERT INTO stock_list (name,grade,quantity,unit,purchase) VALUES (#{name},#{grade},#{quantity},#{unit},#{purchase})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insert(StockList stocklist);
 
-    @Update("update stock_list set name = #{name}, grade = #{grade}, quantity = #{quantity}, unit = #{unit}, purchase = #{purchase} where id = #{id}")
+    @Update("UPDATE stock_list SET name = #{name}, grade = #{grade}, quantity = #{quantity}, unit = #{unit}, purchase = #{purchase} WHERE id = #{id}")
     void update(StockList stockList);
 
-    @Delete("delete from stock_list WHERE id = #{id}")
+    @Delete("DELETE FROM stock_list WHERE id = #{id}")
     void delete(Integer id);
 
 }
