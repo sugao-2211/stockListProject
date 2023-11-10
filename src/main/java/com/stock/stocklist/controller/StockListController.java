@@ -45,21 +45,21 @@ public class StockListController {
     public ResponseEntity<MessageResponse> insert(@RequestBody @Validated InsertRequest insertRequest, UriComponentsBuilder uriComponentsBuilder) {
         StockList insertData = stockListService.insert(insertRequest.convertToStockList());
         URI uri = uriComponentsBuilder.path("/stockList/{id}").buildAndExpand(insertData.getId()).toUri();
-        MessageResponse message = new MessageResponse("newData Created");
+        MessageResponse message = new MessageResponse("new data created");
         return ResponseEntity.created(uri).body(message);
     }
 
     @PatchMapping("/stockList/{id}")
     public ResponseEntity<MessageResponse> update(@PathVariable Integer id, @RequestBody @Validated UpdateRequest updateRequest) {
         stockListService.update(updateRequest.convertToStockList(id));
-        MessageResponse message = new MessageResponse("data Updated");
+        MessageResponse message = new MessageResponse("data updated");
         return ResponseEntity.ok(message);
     }
 
     @DeleteMapping("/stockList/{id}")
     public ResponseEntity<MessageResponse> delete(@PathVariable Integer id) {
         stockListService.delete(id);
-        MessageResponse message = new MessageResponse("data Deleted");
+        MessageResponse message = new MessageResponse("data deleted");
         return ResponseEntity.ok(message);
     }
 
