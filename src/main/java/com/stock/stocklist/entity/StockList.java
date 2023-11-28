@@ -1,7 +1,10 @@
 package com.stock.stocklist.entity;
 
+import lombok.EqualsAndHashCode;
+
 import java.time.LocalDate;
 
+@EqualsAndHashCode
 public class StockList {
 
     private Integer id;
