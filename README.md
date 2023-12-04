@@ -151,6 +151,9 @@ https://github.com/users/sugao-2211/projects/1
     - 存在する在庫のidをパスパラメータに指定したときに正常に在庫の情報が返されること
     - 存在しないIDをパスパラメータに指定したときにNotFoundExceptionが返されること
     - 存在しないIDをパスパラメータに指定し例外が発生したときに期待した例外ハンドリングが返されること(NotFoundException = "data not found")
+
+  https://github.com/sugao-2211/stockListProject/blob/e8d7c8dd4d7a8342de67f6051d5ed96f452e8fd8/src/test/java/com/stock/stocklist/service/StockListServiceTest.java#L1-L59
+
 - 実行結果
   <img width="1426" alt="スクリーンショット 2023-12-04 17 55 18" src="https://github.com/sugao-2211/stockListProject/assets/141313076/7714bc6c-6570-4908-9aca-1a2ae50341d8">
 
