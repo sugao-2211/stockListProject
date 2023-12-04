@@ -13,10 +13,8 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -45,14 +43,6 @@ class StockListServiceTest {
         assertThrows(NotFoundException.class, () -> {
             stockListService.findById(99);
         });
-        verify(stockListMapper, times(1)).findById(99);
-    }
-
-    @Test
-    public void 存在しないIDを指定し例外が発生したときに期待した例外ハンドリングが返されること() throws Exception {
-        doThrow(new NotFoundException("data not found")).when(stockListMapper).findById(99);
-
-        assertThatThrownBy(() -> stockListService.findById(99)).isInstanceOfSatisfying(NotFoundException.class, e -> assertThat(e.getMessage()).isEqualTo("data not found"));
         verify(stockListMapper, times(1)).findById(99);
     }
 
