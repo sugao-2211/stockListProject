@@ -46,4 +46,5 @@ class StockListServiceTest {
         verify(stockListMapper, times(1)).findById(99);
     }
 
+
 }
