@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,6 +76,15 @@ class StockListServiceTest {
         assertThat(actual).isEqualTo(List.of(new StockList(1, "メタノール", "HPLC用", 3, "L", LocalDate.parse("2023-05-24"))));
         verify(stockListMapper, times(1)).findByName("メタノール");
         verify(stockListMapper, never()).findAll();
+    }
+
+    @Test
+    public void 存在しない名前をクエリパラメータに指定したときにNotFoundExceptionが返されること() throws Exception {
+        doReturn(Collections.emptyList()).when(stockListMapper).findByName("硫酸カリウム");
+        assertThrows(NotFoundException.class, () -> {
+            stockListService.findData("硫酸カリウム");
+        });
+        verify(stockListMapper, times(1)).findByName("硫酸カリウム");
     }
 
 }
