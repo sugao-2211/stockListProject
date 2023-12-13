@@ -65,4 +65,16 @@ class StockListServiceTest {
 
     }
 
+    @Test
+    public void 存在する名前をクエリパラメータに指定したときにfindByNameメソッドが呼び出されること() throws Exception {
+        doReturn(List.of(new StockList(1, "メタノール", "HPLC用", 3, "L", LocalDate.parse("2023-05-24"))))
+                .when(stockListMapper).findByName("メタノール");
+
+        List<StockList> actual = stockListService.findData("メタノール");
+
+        assertThat(actual).isEqualTo(List.of(new StockList(1, "メタノール", "HPLC用", 3, "L", LocalDate.parse("2023-05-24"))));
+        verify(stockListMapper, times(1)).findByName("メタノール");
+        verify(stockListMapper, never()).findAll();
+    }
+
 }
