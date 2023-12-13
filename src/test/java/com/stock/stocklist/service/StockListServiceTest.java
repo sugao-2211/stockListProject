@@ -10,11 +10,13 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -46,5 +48,21 @@ class StockListServiceTest {
         verify(stockListMapper, times(1)).findById(99);
     }
 
+    @Test
+    public void クエリパラメータを指定しなかったときにfindAllメソッドが呼び出されること() throws Exception {
+        List<StockList> stockList = List.of(
+                new StockList(1, "メタノール", "HPLC用", 3, "L", LocalDate.parse("2023-05-24")),
+                new StockList(2, "塩化カリウム", "特級", 500, "g", LocalDate.parse("2023-07-19")),
+                new StockList(3, "硫酸ナトリウム", "特級", 5, "kg", LocalDate.parse("2023-10-11"))
+        );
+
+        doReturn(stockList).when(stockListMapper).findAll();
+
+        List<StockList> actual = stockListService.findData(null);
+        assertThat(actual).isEqualTo(stockList);
+        verify(stockListMapper, times(1)).findAll();
+        verify(stockListMapper, never()).findByName("メタノール");
+
+    }
 
 }
