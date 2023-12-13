@@ -50,7 +50,7 @@ class StockListServiceTest {
     }
 
     @Test
-    public void クエリパラメータを指定しなかったときにfindAllメソッドが呼び出されること() throws Exception {
+    public void 在庫の名前を指定しなかったときにfindAllメソッド呼び出されて全件の在庫情報が返却されること() throws Exception {
         List<StockList> stockList = List.of(
                 new StockList(1, "メタノール", "HPLC用", 3, "L", LocalDate.parse("2023-05-24")),
                 new StockList(2, "塩化カリウム", "特級", 500, "g", LocalDate.parse("2023-07-19")),
@@ -67,7 +67,7 @@ class StockListServiceTest {
     }
 
     @Test
-    public void 存在する名前をクエリパラメータに指定したときにfindByNameメソッドが呼び出されること() throws Exception {
+    public void 存在する名前を指定したときにfindByNameメソッドが呼び出されて該当する在庫情報が返却されること() throws Exception {
         doReturn(List.of(new StockList(1, "メタノール", "HPLC用", 3, "L", LocalDate.parse("2023-05-24"))))
                 .when(stockListMapper).findByName("メタノール");
 
