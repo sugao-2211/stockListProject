@@ -69,10 +69,13 @@ https://github.com/users/sugao-2211/projects/1
     - id「4」で検索
 - パスパラメータ(id)の検索における例外処理
     - id「9」で検索し例外処理を発生
-- findByIdメソッド()(パスパラメータ検索)のService単体テスト
+- findById()メソッド(パスパラメータ検索)のService単体テスト
     - 存在する在庫のidをパスパラメータに指定したときに正常に在庫の情報が返されること
     - 存在しないIDをパスパラメータに指定したときにNotFoundExceptionが返されること
-    - 存在しないIDをパスパラメータに指定し例外が発生したときに期待した例外ハンドリングが返されること(NotFoundException = "data not found")
+- findData()メソッド(クエリパラメータ検索)のService単体テスト
+    - クエリパラメータを指定しなかったときにfindAllメソッドが呼び出されること
+    - 存在する名前をクエリパラメータに指定したときにfindByNameメソッドが呼び出されること
+    - 存在しない名前をクエリパラメータに指定したときにNotFoundExceptionが返されること
 
 ##
 
@@ -145,9 +148,9 @@ https://github.com/users/sugao-2211/projects/1
 ##
 
 <details>
-<summary>findByIdメソッド()(パスパラメータ検索)のService単体テスト</summary>
+<summary>findById()メソッド(パスパラメータ検索)のService単体テスト</summary>
 
-- findByIdメソッド()(パスパラメータ検索)のService単体テスト
+- findById()メソッド(パスパラメータ検索)のService単体テスト
     - 存在する在庫のidをパスパラメータに指定したときに正常に在庫の情報が返されること
     - 存在しないIDをパスパラメータに指定したときにNotFoundExceptionが返されること
 
@@ -161,19 +164,19 @@ https://github.com/users/sugao-2211/projects/1
 ##
 
 <details>
-<summary>findDataメソッド()(クエリパラメータ検索)のService単体テスト</summary>
+<summary>findData()メソッド(クエリパラメータ検索)のService単体テスト</summary>
 
-- findByIdメソッド()(パスパラメータ検索)のService単体テスト
-    - クエリパラメータを指定しなかったときにfindAllメソッドが呼び出されること
-    - 存在する名前をクエリパラメータに指定したときにfindByNameメソッドが呼び出されること
+- findData()メソッド(クエリパラメータ検索)のService単体テスト
+    - クエリパラメータを指定しなかったときにfindAll()メソッドが呼び出されること
+    - 存在する名前をクエリパラメータに指定したときにfindByName()メソッドが呼び出されること
     - 存在しない名前をクエリパラメータに指定したときにNotFoundExceptionが返されること
 
-  https://github.com/sugao-2211/stockListProject/blob/e8d7c8dd4d7a8342de67f6051d5ed96f452e8fd8/src/test/java/com/stock/stocklist/service/StockListServiceTest.java#L52-L88
+  https://github.com/sugao-2211/stockListProject/blob/563beb0a6b24b06830bc7f2139ad1769a67e35f0/src/test/java/com/stock/stocklist/service/StockListServiceTest.java#L52-L89
 
 - 実行結果
-    - クエリパラメータを指定しなかったときにfindAllメソッドが呼び出されること
+    - クエリパラメータを指定しなかったときにfindAll()メソッドが呼び出されること
       <img width="1373" alt="スクリーンショット 2023-12-13 10 56 07" src="https://github.com/sugao-2211/stockListProject/assets/141313076/d63495d2-e7ed-46fe-be2b-5bd4a214aa6b">
-    - 存在する名前をクエリパラメータに指定したときにfindByNameメソッドが呼び出されること
+    - 存在する名前をクエリパラメータに指定したときにfindByName()メソッドが呼び出されること
       <img width="1380" alt="スクリーンショット 2023-12-13 10 56 29" src="https://github.com/sugao-2211/stockListProject/assets/141313076/a394563c-2254-4620-9f19-8fe864001f6b">
     - 存在しない名前をクエリパラメータに指定したときにNotFoundExceptionが返されること
       <img width="1373" alt="スクリーンショット 2023-12-13 10 56 07" src="https://github.com/sugao-2211/stockListProject/assets/141313076/d63495d2-e7ed-46fe-be2b-5bd4a214aa6b">
