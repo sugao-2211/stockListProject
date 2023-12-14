@@ -36,15 +36,15 @@ public class StockListController {
 
     @GetMapping("/stockList/{id}")
     public ResponseEntity<StockListResponse> partData(@PathVariable int id) {
-        StockList getData = stockListService.findById(id);
-        StockListResponse partData = new StockListResponse(getData);
+        StockList stockList = stockListService.findById(id);
+        StockListResponse partData = new StockListResponse(stockList);
         return ResponseEntity.ok(partData);
     }
 
     @PostMapping("/stockList")
     public ResponseEntity<MessageResponse> insert(@RequestBody @Validated InsertRequest insertRequest, UriComponentsBuilder uriComponentsBuilder) {
-        StockList insertData = stockListService.insert(insertRequest.convertToStockList());
-        URI uri = uriComponentsBuilder.path("/stockList/{id}").buildAndExpand(insertData.getId()).toUri();
+        StockList stockList = stockListService.insert(insertRequest.convertToStockList());
+        URI uri = uriComponentsBuilder.path("/stockList/{id}").buildAndExpand(stockList.getId()).toUri();
         MessageResponse message = new MessageResponse("new data created");
         return ResponseEntity.created(uri).body(message);
     }
