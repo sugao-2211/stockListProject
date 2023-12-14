@@ -30,8 +30,8 @@ public class StockListController {
     @GetMapping("/stockList")
     public ResponseEntity<List<StockListResponse>> findData(String name) {
         List<StockList> stockList = stockListService.findData(name);
-        List<StockListResponse> AllData = stockList.stream().map(StockListResponse::new).toList();
-        return ResponseEntity.ok(AllData);
+        List<StockListResponse> allData = stockList.stream().map(StockListResponse::new).toList();
+        return ResponseEntity.ok(allData);
     }
 
     @GetMapping("/stockList/{id}")
