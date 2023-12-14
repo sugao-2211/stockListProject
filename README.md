@@ -167,19 +167,19 @@ https://github.com/users/sugao-2211/projects/1
 <summary>findData()メソッド(クエリパラメータ検索)のService単体テスト</summary>
 
 - findData()メソッド(クエリパラメータ検索)のService単体テスト
-    - クエリパラメータを指定しなかったときにfindAll()メソッドが呼び出されること
-    - 存在する名前をクエリパラメータに指定したときにfindByName()メソッドが呼び出されること
-    - 存在しない名前をクエリパラメータに指定したときにNotFoundExceptionが返されること
+    - 在庫の名前を指定しなかったときにfindAllメソッド呼び出されて全件の在庫情報が返却されること
+    - 存在する名前を指定したときにfindByNameメソッドが呼び出されて該当する在庫情報が返却されること
+    - 存在しない名前を指定したときに空のListが返されること
 
-  https://github.com/sugao-2211/stockListProject/blob/563beb0a6b24b06830bc7f2139ad1769a67e35f0/src/test/java/com/stock/stocklist/service/StockListServiceTest.java#L52-L89
+  https://github.com/sugao-2211/stockListProject/blob/dac5df8cb3816a8ec91aad88ea8d47a3b48f2b52/src/test/java/com/stock/stocklist/service/StockListServiceTest.java#L52-L91
 
 - 実行結果
-    - クエリパラメータを指定しなかったときにfindAll()メソッドが呼び出されること
+    - 在庫の名前を指定しなかったときにfindAllメソッド呼び出されて全件の在庫情報が返却されること
       <img width="1373" alt="スクリーンショット 2023-12-13 10 56 07" src="https://github.com/sugao-2211/stockListProject/assets/141313076/d63495d2-e7ed-46fe-be2b-5bd4a214aa6b">
-    - 存在する名前をクエリパラメータに指定したときにfindByName()メソッドが呼び出されること
+    - 存在する名前を指定したときにfindByNameメソッドが呼び出されて該当する在庫情報が返却されること
       <img width="1380" alt="スクリーンショット 2023-12-13 10 56 29" src="https://github.com/sugao-2211/stockListProject/assets/141313076/a394563c-2254-4620-9f19-8fe864001f6b">
-    - 存在しない名前をクエリパラメータに指定したときにNotFoundExceptionが返されること
-      <img width="1373" alt="スクリーンショット 2023-12-13 10 56 07" src="https://github.com/sugao-2211/stockListProject/assets/141313076/d63495d2-e7ed-46fe-be2b-5bd4a214aa6b">
+    - 存在しない名前を指定したときに空のListが返されること
+      <img width="1362" alt="スクリーンショット 2023-12-14 15 39 45" src="https://github.com/sugao-2211/stockListProject/assets/141313076/e893ad2f-ff4e-4909-be49-2f5f541381d2">
 
 </details>
 
