@@ -18,6 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class StockListMapperTest {
+
     @Autowired
     StockListMapper stockListMapper;
 
@@ -27,7 +28,7 @@ class StockListMapperTest {
     void 全ての在庫情報が取得できること() {
         List<StockList> stockList = stockListMapper.findAll();
         assertThat(stockList)
-                .hasSize(3)
+                .hasSize(6)
                 .contains(
                         new StockList(1, "メタノール", "HPLC用", 3, "L", LocalDate.of(2023, 5, 24)),
                         new StockList(2, "塩化カリウム", "特級", 500, "g", LocalDate.of(2023, 7, 19)),
