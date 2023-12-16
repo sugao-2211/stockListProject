@@ -189,7 +189,7 @@ https://github.com/users/sugao-2211/projects/1
 <summary>findAll()メソッドのDB単体テスト</summary>
 
 - findAll()メソッドのDB単体テスト
-    - 在庫の名前を指定しなかったときにfindAllメソッド呼び出されて全件の在庫情報が返却されること
+    - findAll()メソッドによって全件の在庫情報が返却されること
 
   https://github.com/sugao-2211/stockListProject/blob/a3fc05a918a62fcfa01414b7aa416d632f9bc833/src/test/java/com/stock/stocklist/mapper/StockListMapperTest.java#L1-L42
   https://github.com/sugao-2211/stockListProject/blob/38da884c0443afb05d3d58d154dc0cdb322ab945/src/test/resources/datasets/stockList.yml#L1-L37
@@ -197,8 +197,7 @@ https://github.com/users/sugao-2211/projects/1
   https://github.com/sugao-2211/stockListProject/blob/38da884c0443afb05d3d58d154dc0cdb322ab945/build.gradle#L18-L28
 
 - 実行結果
-    - findAll()メソッドによって全件の在庫情報が返却されること
-      <img width="1384" alt="スクリーンショット 2023-12-16 23 42 21" src="https://github.com/sugao-2211/stockListProject/assets/141313076/ad64405b-a2d0-4409-90d2-863baeb8bc02">
+  <img width="1384" alt="スクリーンショット 2023-12-16 23 42 21" src="https://github.com/sugao-2211/stockListProject/assets/141313076/ad64405b-a2d0-4409-90d2-863baeb8bc02">
 
 </details>
 
