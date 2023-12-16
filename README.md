@@ -123,7 +123,7 @@ https://github.com/users/sugao-2211/projects/1
 ##
 
 <details>
-<summary>id検索(パスパラメータ検索)及び例外処理</summary>
+<summary>id検索(パスパラメータ検索)</summary>
 
 - id検索(パスパラメータ検索)
     - curlコマンド
@@ -135,13 +135,13 @@ https://github.com/users/sugao-2211/projects/1
 
 ##
 
-- id検索(パスパラメータ検索)における例外処理
+- id検索(パスパラメータ検索)で存在しない名前を指定した場合
     - curlコマンド
       ```
       curl --location 'http://localhost:8080/stockList/9'
       ```
     - 実行結果
-      <img width="1004" alt="スクリーンショット 2023-10-31 16 17 58" src="https://github.com/sugao-2211/stockListProject/assets/141313076/119ed0ee-64ee-447a-befc-c185ded3dc94">
+      <img width="1009" alt="スクリーンショット 2023-12-16 23 49 10" src="https://github.com/sugao-2211/stockListProject/assets/141313076/6ddc11dd-b143-4b03-849f-488f2930bf4d">
 
 </details>
 
