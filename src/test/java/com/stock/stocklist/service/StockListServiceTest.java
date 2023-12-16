@@ -79,12 +79,14 @@ class StockListServiceTest {
     }
 
     @Test
-    public void 存在しない名前をクエリパラメータに指定したときにNotFoundExceptionが返されること() throws Exception {
-        doReturn(Collections.emptyList()).when(stockListMapper).findByName("硫酸カリウム");
-        assertThrows(NotFoundException.class, () -> {
-            stockListService.findData("硫酸カリウム");
-        });
-        verify(stockListMapper, times(1)).findByName("硫酸カリウム");
+    public void 存在しない名前を指定したときに空のListが返されること() throws Exception {
+        doReturn(Collections.emptyList()).when(stockListMapper).findByName("硝酸");
+
+        List<StockList> actual = stockListService.findData("硝酸");
+        assertThat(actual).isEqualTo(Collections.emptyList());
+
+        verify(stockListMapper, times(1)).findByName("硝酸");
+        verify(stockListMapper, never()).findAll();
     }
 
 }

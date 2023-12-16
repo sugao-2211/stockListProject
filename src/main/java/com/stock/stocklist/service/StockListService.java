@@ -22,9 +22,6 @@ public class StockListService {
             stockList = stockListMapper.findAll();
         } else {
             stockList = stockListMapper.findByName(name);
-            if (stockList.isEmpty()) {
-                throw new NotFoundException("data not found");
-            }
         }
         return stockList;
     }
