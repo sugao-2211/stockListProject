@@ -17,16 +17,13 @@ public class StockListService {
     private final StockListMapper stockListMapper;
 
     public List<StockList> findData(String name) {
-        List<StockList> getData;
+        List<StockList> stockList;
         if (Objects.isNull(name)) {
-            getData = stockListMapper.findAll();
+            stockList = stockListMapper.findAll();
         } else {
-            getData = stockListMapper.findByName(name);
-            if (getData.isEmpty()) {
-                throw new NotFoundException("data not found");
-            }
+            stockList = stockListMapper.findByName(name);
         }
-        return getData;
+        return stockList;
     }
 
     public StockList findById(int id) {

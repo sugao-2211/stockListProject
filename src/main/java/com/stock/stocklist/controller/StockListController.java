@@ -29,22 +29,22 @@ public class StockListController {
 
     @GetMapping("/stockList")
     public ResponseEntity<List<StockListResponse>> findData(String name) {
-        List<StockList> getData = stockListService.findData(name);
-        List<StockListResponse> findData = getData.stream().map(StockListResponse::new).toList();
-        return ResponseEntity.ok(findData);
+        List<StockList> stockList = stockListService.findData(name);
+        List<StockListResponse> allData = stockList.stream().map(StockListResponse::new).toList();
+        return ResponseEntity.ok(allData);
     }
 
     @GetMapping("/stockList/{id}")
     public ResponseEntity<StockListResponse> partData(@PathVariable int id) {
-        StockList getData = stockListService.findById(id);
-        StockListResponse partData = new StockListResponse(getData);
+        StockList stockList = stockListService.findById(id);
+        StockListResponse partData = new StockListResponse(stockList);
         return ResponseEntity.ok(partData);
     }
 
     @PostMapping("/stockList")
     public ResponseEntity<MessageResponse> insert(@RequestBody @Validated InsertRequest insertRequest, UriComponentsBuilder uriComponentsBuilder) {
-        StockList insertData = stockListService.insert(insertRequest.convertToStockList());
-        URI uri = uriComponentsBuilder.path("/stockList/{id}").buildAndExpand(insertData.getId()).toUri();
+        StockList stockList = stockListService.insert(insertRequest.convertToStockList());
+        URI uri = uriComponentsBuilder.path("/stockList/{id}").buildAndExpand(stockList.getId()).toUri();
         MessageResponse message = new MessageResponse("new data created");
         return ResponseEntity.created(uri).body(message);
     }
