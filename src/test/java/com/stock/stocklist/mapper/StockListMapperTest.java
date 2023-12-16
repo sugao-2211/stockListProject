@@ -37,7 +37,6 @@ class StockListMapperTest {
                         new StockList(5, "硫酸", "硫酸呈色用", 500, "ｍL", LocalDate.of(2023, 4, 5)),
                         new StockList(6, "ピリドキシン塩酸塩", "日本薬局方標準品", 200, "mg", LocalDate.of(2023, 9, 22))
                 );
-
     }
 
 }
