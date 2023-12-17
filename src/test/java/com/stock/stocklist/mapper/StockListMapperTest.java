@@ -39,4 +39,13 @@ class StockListMapperTest {
                 );
     }
 
+    @Test
+    @DataSet(value = "datasets/stockList.yml")
+    @Transactional
+    void 在庫名を指定した時に該当する在庫情報が取得できること() {
+        List<StockList> stockList = stockListMapper.findByName("メタノール");
+        assertThat(stockList)
+                .contains(new StockList(1, "メタノール", "HPLC用", 3, "L", LocalDate.of(2023, 5, 24)));
+    }
+
 }
