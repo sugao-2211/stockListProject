@@ -51,7 +51,7 @@ class StockListMapperTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 存在しない在庫を指定したときに空のリストが返されること() {
+    void 存在しない在庫名を指定したときに空のリストが返されること() {
         List<StockList> stockList = stockListMapper.findByName("硝酸");
         assertThat(stockList).isEmpty();
     }

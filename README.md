@@ -208,14 +208,14 @@ https://github.com/users/sugao-2211/projects/1
 
 - findByName()メソッドのDB単体テスト
     - 在庫名を指定したときに該当するの在庫情報が取得できること
-    - 存在しない在庫を指定したときに空のリストが返されること
+    - 存在しない在庫名を指定したときに空のリストが返されること
 
   https://github.com/sugao-2211/stockListProject/blob/4a1c4063201ef38414f2568a0cb9ebcdc9b49825/src/test/java/com/stock/stocklist/mapper/StockListMapperTest.java#L42-L58
 
 - 実行結果
     - 在庫名を指定したときに該当するの在庫情報が取得できること
       <img width="1391" alt="スクリーンショット 2023-12-17 16 19 03" src="https://github.com/sugao-2211/stockListProject/assets/141313076/89714d1e-e855-42f9-9c0d-0e2ab244e634">
-    - 存在しない在庫を指定したときに空のリストが返されること
+    - 存在しない在庫名を指定したときに空のリストが返されること
       <img width="1383" alt="スクリーンショット 2023-12-17 16 24 05" src="https://github.com/sugao-2211/stockListProject/assets/141313076/fe32ee08-a1d7-4c22-a44f-089751b9fb1f">
 
 </details>
