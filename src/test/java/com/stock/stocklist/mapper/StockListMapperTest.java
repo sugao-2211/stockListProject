@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -53,6 +54,23 @@ class StockListMapperTest {
     @Transactional
     void 存在しない在庫名を指定したときに空のリストが返されること() {
         List<StockList> stockList = stockListMapper.findByName("硝酸");
+        assertThat(stockList).isEmpty();
+    }
+
+    @Test
+    @DataSet(value = "datasets/stockList.yml")
+    @Transactional
+    void idを指定したときに該当する在庫情報が取得できること() {
+        Optional<StockList> stockList = stockListMapper.findById(1);
+        assertThat(stockList)
+                .contains(new StockList(1, "メタノール", "HPLC用", 3, "L", LocalDate.of(2023, 5, 24)));
+    }
+
+    @Test
+    @DataSet(value = "datasets/stockList.yml")
+    @Transactional
+    void 存在しないidを指定したときに空のOptionalが返されること() {
+        Optional<StockList> stockList = stockListMapper.findById(99);
         assertThat(stockList).isEmpty();
     }
 
