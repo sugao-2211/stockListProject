@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import java.time.LocalDate;
 
 @EqualsAndHashCode
-public class StockList {
+public class Stock {
 
     private Integer id;
     private String name;
@@ -14,7 +14,7 @@ public class StockList {
     private String unit;
     private LocalDate purchase;
 
-    public StockList(Integer id, String name, String grade, int quantity, String unit, LocalDate purchase) {
+    public Stock(Integer id, String name, String grade, int quantity, String unit, LocalDate purchase) {
         this.id = id;
         this.name = name;
         this.grade = grade;

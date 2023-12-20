@@ -3,9 +3,9 @@ package com.stock.stocklist.controller;
 import com.stock.stocklist.controller.request.InsertRequest;
 import com.stock.stocklist.controller.request.UpdateRequest;
 import com.stock.stocklist.controller.response.MessageResponse;
-import com.stock.stocklist.controller.response.StockListResponse;
-import com.stock.stocklist.entity.StockList;
-import com.stock.stocklist.service.StockListService;
+import com.stock.stocklist.controller.response.StockResponse;
+import com.stock.stocklist.entity.Stock;
+import com.stock.stocklist.service.StockService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -23,27 +23,27 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class StockListController {
+public class StockController {
 
-    private final StockListService stockListService;
+    private final StockService stockListService;
 
     @GetMapping("/stockList")
-    public ResponseEntity<List<StockListResponse>> findData(String name) {
-        List<StockList> stockList = stockListService.findData(name);
-        List<StockListResponse> allData = stockList.stream().map(StockListResponse::new).toList();
+    public ResponseEntity<List<StockResponse>> findData(String name) {
+        List<Stock> stockList = stockListService.findData(name);
+        List<StockResponse> allData = stockList.stream().map(StockResponse::new).toList();
         return ResponseEntity.ok(allData);
     }
 
     @GetMapping("/stockList/{id}")
-    public ResponseEntity<StockListResponse> partData(@PathVariable int id) {
-        StockList stockList = stockListService.findById(id);
-        StockListResponse partData = new StockListResponse(stockList);
+    public ResponseEntity<StockResponse> partData(@PathVariable int id) {
+        Stock stockList = stockListService.findById(id);
+        StockResponse partData = new StockResponse(stockList);
         return ResponseEntity.ok(partData);
     }
 
     @PostMapping("/stockList")
     public ResponseEntity<MessageResponse> insert(@RequestBody @Validated InsertRequest insertRequest, UriComponentsBuilder uriComponentsBuilder) {
-        StockList stockList = stockListService.insert(insertRequest.convertToStockList());
+        Stock stockList = stockListService.insert(insertRequest.convertToStockList());
         URI uri = uriComponentsBuilder.path("/stockList/{id}").buildAndExpand(stockList.getId()).toUri();
         MessageResponse message = new MessageResponse("new data created");
         return ResponseEntity.created(uri).body(message);

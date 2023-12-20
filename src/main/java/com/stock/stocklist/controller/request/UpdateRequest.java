@@ -1,6 +1,6 @@
 package com.stock.stocklist.controller.request;
 
-import com.stock.stocklist.entity.StockList;
+import com.stock.stocklist.entity.Stock;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -33,8 +33,8 @@ public class UpdateRequest {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate purchase;
 
-    public StockList convertToStockList(Integer id) {
-        StockList convert = new StockList(id, name, grade, quantity, unit, purchase);
+    public Stock convertToStockList(Integer id) {
+        Stock convert = new Stock(id, name, grade, quantity, unit, purchase);
         return convert;
     }
 

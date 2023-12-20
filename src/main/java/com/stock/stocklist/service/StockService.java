@@ -1,8 +1,8 @@
 package com.stock.stocklist.service;
 
-import com.stock.stocklist.entity.StockList;
+import com.stock.stocklist.entity.Stock;
 import com.stock.stocklist.exception.NotFoundException;
-import com.stock.stocklist.mapper.StockListMapper;
+import com.stock.stocklist.mapper.StockMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +12,12 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class StockListService {
+public class StockService {
 
-    private final StockListMapper stockListMapper;
+    private final StockMapper stockListMapper;
 
-    public List<StockList> findData(String name) {
-        List<StockList> stockList;
+    public List<Stock> findData(String name) {
+        List<Stock> stockList;
         if (Objects.isNull(name)) {
             stockList = stockListMapper.findAll();
         } else {
@@ -26,17 +26,17 @@ public class StockListService {
         return stockList;
     }
 
-    public StockList findById(int id) {
+    public Stock findById(int id) {
         return stockListMapper.findById(id).orElseThrow(() -> new NotFoundException("data not found"));
     }
 
-    public StockList insert(StockList stockList) {
+    public Stock insert(Stock stockList) {
         stockListMapper.insert(stockList);
         return stockList;
     }
 
-    public StockList update(StockList stockList) {
-        Optional<StockList> updatedStockList = stockListMapper.findById(stockList.getId());
+    public Stock update(Stock stockList) {
+        Optional<Stock> updatedStockList = stockListMapper.findById(stockList.getId());
         if (updatedStockList.isPresent()) {
             stockListMapper.update(stockList);
         } else {
@@ -46,7 +46,7 @@ public class StockListService {
     }
 
     public Integer delete(Integer id) {
-        Optional<StockList> updatedStockList = stockListMapper.findById(id);
+        Optional<Stock> updatedStockList = stockListMapper.findById(id);
         if (updatedStockList.isPresent()) {
             stockListMapper.delete(id);
         } else {
