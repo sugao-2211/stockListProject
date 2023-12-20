@@ -36,8 +36,8 @@ public class StockService {
     }
 
     public Stock update(Stock stock) {
-        Optional<Stock> updatedStockList = stockListMapper.findById(stock.getId());
-        if (updatedStockList.isPresent()) {
+        Optional<Stock> updatedStock = stockListMapper.findById(stock.getId());
+        if (updatedStock.isPresent()) {
             stockListMapper.update(stock);
         } else {
             throw new NotFoundException("data not found");
@@ -46,8 +46,8 @@ public class StockService {
     }
 
     public Integer delete(Integer id) {
-        Optional<Stock> updatedStockList = stockListMapper.findById(id);
-        if (updatedStockList.isPresent()) {
+        Optional<Stock> deletedStock = stockListMapper.findById(id);
+        if (deletedStock.isPresent()) {
             stockListMapper.delete(id);
         } else {
             throw new NotFoundException("data not found");
