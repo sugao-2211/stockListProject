@@ -25,25 +25,25 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StockController {
 
-    private final StockService stockListService;
+    private final StockService stockService;
 
     @GetMapping("/stockList")
     public ResponseEntity<List<StockResponse>> findData(String name) {
-        List<Stock> stock = stockListService.findData(name);
+        List<Stock> stock = stockService.findData(name);
         List<StockResponse> allData = stock.stream().map(StockResponse::new).toList();
         return ResponseEntity.ok(allData);
     }
 
     @GetMapping("/stockList/{id}")
     public ResponseEntity<StockResponse> partData(@PathVariable int id) {
-        Stock stock = stockListService.findById(id);
+        Stock stock = stockService.findById(id);
         StockResponse partData = new StockResponse(stock);
         return ResponseEntity.ok(partData);
     }
 
     @PostMapping("/stockList")
     public ResponseEntity<MessageResponse> insert(@RequestBody @Validated InsertRequest insertRequest, UriComponentsBuilder uriComponentsBuilder) {
-        Stock stock = stockListService.insert(insertRequest.convertToStock());
+        Stock stock = stockService.insert(insertRequest.convertToStock());
         URI uri = uriComponentsBuilder.path("/stockList/{id}").buildAndExpand(stock.getId()).toUri();
         MessageResponse message = new MessageResponse("new data created");
         return ResponseEntity.created(uri).body(message);
@@ -51,14 +51,14 @@ public class StockController {
 
     @PatchMapping("/stockList/{id}")
     public ResponseEntity<MessageResponse> update(@PathVariable Integer id, @RequestBody @Validated UpdateRequest updateRequest) {
-        stockListService.update(updateRequest.convertToStock(id));
+        stockService.update(updateRequest.convertToStock(id));
         MessageResponse message = new MessageResponse("data updated");
         return ResponseEntity.ok(message);
     }
 
     @DeleteMapping("/stockList/{id}")
     public ResponseEntity<MessageResponse> delete(@PathVariable Integer id) {
-        stockListService.delete(id);
+        stockService.delete(id);
         MessageResponse message = new MessageResponse("data deleted");
         return ResponseEntity.ok(message);
     }

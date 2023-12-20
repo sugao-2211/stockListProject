@@ -14,31 +14,31 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class StockService {
 
-    private final StockMapper stockListMapper;
+    private final StockMapper stockMapper;
 
     public List<Stock> findData(String name) {
         List<Stock> stockList;
         if (Objects.isNull(name)) {
-            stockList = stockListMapper.findAll();
+            stockList = stockMapper.findAll();
         } else {
-            stockList = stockListMapper.findByName(name);
+            stockList = stockMapper.findByName(name);
         }
         return stockList;
     }
 
     public Stock findById(int id) {
-        return stockListMapper.findById(id).orElseThrow(() -> new NotFoundException("data not found"));
+        return stockMapper.findById(id).orElseThrow(() -> new NotFoundException("data not found"));
     }
 
     public Stock insert(Stock stock) {
-        stockListMapper.insert(stock);
+        stockMapper.insert(stock);
         return stock;
     }
 
     public Stock update(Stock stock) {
-        Optional<Stock> updatedStock = stockListMapper.findById(stock.getId());
+        Optional<Stock> updatedStock = stockMapper.findById(stock.getId());
         if (updatedStock.isPresent()) {
-            stockListMapper.update(stock);
+            stockMapper.update(stock);
         } else {
             throw new NotFoundException("data not found");
         }
@@ -46,9 +46,9 @@ public class StockService {
     }
 
     public Integer delete(Integer id) {
-        Optional<Stock> deletedStock = stockListMapper.findById(id);
+        Optional<Stock> deletedStock = stockMapper.findById(id);
         if (deletedStock.isPresent()) {
-            stockListMapper.delete(id);
+            stockMapper.delete(id);
         } else {
             throw new NotFoundException("data not found");
         }
