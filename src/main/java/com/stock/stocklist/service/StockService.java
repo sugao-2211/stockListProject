@@ -30,19 +30,19 @@ public class StockService {
         return stockListMapper.findById(id).orElseThrow(() -> new NotFoundException("data not found"));
     }
 
-    public Stock insert(Stock stockList) {
-        stockListMapper.insert(stockList);
-        return stockList;
+    public Stock insert(Stock stock) {
+        stockListMapper.insert(stock);
+        return stock;
     }
 
-    public Stock update(Stock stockList) {
-        Optional<Stock> updatedStockList = stockListMapper.findById(stockList.getId());
+    public Stock update(Stock stock) {
+        Optional<Stock> updatedStockList = stockListMapper.findById(stock.getId());
         if (updatedStockList.isPresent()) {
-            stockListMapper.update(stockList);
+            stockListMapper.update(stock);
         } else {
             throw new NotFoundException("data not found");
         }
-        return stockList;
+        return stock;
     }
 
     public Integer delete(Integer id) {

@@ -12,13 +12,13 @@ public class StockResponse {
     private String unit;
     private LocalDate purchase;
 
-    public StockResponse(Stock stockList) {
-        this.id = stockList.getId();
-        this.name = stockList.getName();
-        this.grade = stockList.getGrade();
-        this.quantity = stockList.getQuantity();
-        this.unit = stockList.getUnit();
-        this.purchase = stockList.getPurchase();
+    public StockResponse(Stock stock) {
+        this.id = stock.getId();
+        this.name = stock.getName();
+        this.grade = stock.getGrade();
+        this.quantity = stock.getQuantity();
+        this.unit = stock.getUnit();
+        this.purchase = stock.getPurchase();
     }
 
     public int getId() {

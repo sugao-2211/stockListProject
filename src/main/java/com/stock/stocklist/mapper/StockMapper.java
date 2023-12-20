@@ -25,10 +25,10 @@ public interface StockMapper {
 
     @Insert("INSERT INTO stock_list (name,grade,quantity,unit,purchase) VALUES (#{name},#{grade},#{quantity},#{unit},#{purchase})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    void insert(Stock stocklist);
+    void insert(Stock stock);
 
     @Update("UPDATE stock_list SET name = #{name}, grade = #{grade}, quantity = #{quantity}, unit = #{unit}, purchase = #{purchase} WHERE id = #{id}")
-    void update(Stock stockList);
+    void update(Stock stock);
 
     @Delete("DELETE FROM stock_list WHERE id = #{id}")
     void delete(Integer id);
