@@ -27,21 +27,21 @@ public class StockController {
 
     private final StockService stockService;
 
-    @GetMapping("/stockList")
+    @GetMapping("/stock")
     public ResponseEntity<List<StockResponse>> findData(String name) {
         List<Stock> stock = stockService.findData(name);
         List<StockResponse> allData = stock.stream().map(StockResponse::new).toList();
         return ResponseEntity.ok(allData);
     }
 
-    @GetMapping("/stockList/{id}")
+    @GetMapping("/stock/{id}")
     public ResponseEntity<StockResponse> partData(@PathVariable int id) {
         Stock stock = stockService.findById(id);
         StockResponse partData = new StockResponse(stock);
         return ResponseEntity.ok(partData);
     }
 
-    @PostMapping("/stockList")
+    @PostMapping("/stock")
     public ResponseEntity<MessageResponse> insert(@RequestBody @Validated InsertRequest insertRequest, UriComponentsBuilder uriComponentsBuilder) {
         Stock stock = stockService.insert(insertRequest.convertToStock());
         URI uri = uriComponentsBuilder.path("/stockList/{id}").buildAndExpand(stock.getId()).toUri();
@@ -49,14 +49,14 @@ public class StockController {
         return ResponseEntity.created(uri).body(message);
     }
 
-    @PatchMapping("/stockList/{id}")
+    @PatchMapping("/stock/{id}")
     public ResponseEntity<MessageResponse> update(@PathVariable Integer id, @RequestBody @Validated UpdateRequest updateRequest) {
         stockService.update(updateRequest.convertToStock(id));
         MessageResponse message = new MessageResponse("data updated");
         return ResponseEntity.ok(message);
     }
 
-    @DeleteMapping("/stockList/{id}")
+    @DeleteMapping("/stock/{id}")
     public ResponseEntity<MessageResponse> delete(@PathVariable Integer id) {
         stockService.delete(id);
         MessageResponse message = new MessageResponse("data deleted");
