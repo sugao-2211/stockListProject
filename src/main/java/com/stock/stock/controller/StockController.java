@@ -1,11 +1,11 @@
-package com.stock.stocklist.controller;
+package com.stock.stock.controller;
 
-import com.stock.stocklist.controller.request.InsertRequest;
-import com.stock.stocklist.controller.request.UpdateRequest;
-import com.stock.stocklist.controller.response.MessageResponse;
-import com.stock.stocklist.controller.response.StockResponse;
-import com.stock.stocklist.entity.Stock;
-import com.stock.stocklist.service.StockService;
+import com.stock.stock.controller.request.InsertRequest;
+import com.stock.stock.controller.request.UpdateRequest;
+import com.stock.stock.controller.response.MessageResponse;
+import com.stock.stock.controller.response.StockResponse;
+import com.stock.stock.entity.Stock;
+import com.stock.stock.service.StockService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

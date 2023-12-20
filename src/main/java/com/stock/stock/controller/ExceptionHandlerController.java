@@ -1,6 +1,6 @@
-package com.stock.stocklist.controller;
+package com.stock.stock.controller;
 
-import com.stock.stocklist.exception.NotFoundException;
+import com.stock.stock.exception.NotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.stock.stocklist.exception;
+package com.stock.stock.exception;
 
 public class NotFoundException extends RuntimeException {
 

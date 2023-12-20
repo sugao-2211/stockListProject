@@ -1,6 +1,6 @@
-package com.stock.stocklist.controller.response;
+package com.stock.stock.controller.response;
 
-import com.stock.stocklist.entity.Stock;
+import com.stock.stock.entity.Stock;
 
 import java.time.LocalDate;
 

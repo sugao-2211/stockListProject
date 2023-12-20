@@ -1,8 +1,8 @@
-package com.stock.stocklist.mapper;
+package com.stock.stock.mapper;
 
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.spring.api.DBRider;
-import com.stock.stocklist.entity.Stock;
+import com.stock.stock.entity.Stock;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;

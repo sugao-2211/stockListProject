@@ -1,8 +1,8 @@
-package com.stock.stocklist.service;
+package com.stock.stock.service;
 
-import com.stock.stocklist.entity.Stock;
-import com.stock.stocklist.exception.NotFoundException;
-import com.stock.stocklist.mapper.StockMapper;
+import com.stock.stock.entity.Stock;
+import com.stock.stock.exception.NotFoundException;
+import com.stock.stock.mapper.StockMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

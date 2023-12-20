@@ -1,4 +1,4 @@
-package com.stock.stocklist.entity;
+package com.stock.stock.entity;
 
 import lombok.EqualsAndHashCode;
 

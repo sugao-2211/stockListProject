@@ -1,6 +1,6 @@
-package com.stock.stocklist.mapper;
+package com.stock.stock.mapper;
 
-import com.stock.stocklist.entity.Stock;
+import com.stock.stock.entity.Stock;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
