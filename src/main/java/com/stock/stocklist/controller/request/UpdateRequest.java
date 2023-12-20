@@ -33,7 +33,7 @@ public class UpdateRequest {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate purchase;
 
-    public Stock convertToStockList(Integer id) {
+    public Stock convertToStock(Integer id) {
         Stock convert = new Stock(id, name, grade, quantity, unit, purchase);
         return convert;
     }

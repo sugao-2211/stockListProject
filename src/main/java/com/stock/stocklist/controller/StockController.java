@@ -43,7 +43,7 @@ public class StockController {
 
     @PostMapping("/stockList")
     public ResponseEntity<MessageResponse> insert(@RequestBody @Validated InsertRequest insertRequest, UriComponentsBuilder uriComponentsBuilder) {
-        Stock stock = stockListService.insert(insertRequest.convertToStockList());
+        Stock stock = stockListService.insert(insertRequest.convertToStock());
         URI uri = uriComponentsBuilder.path("/stockList/{id}").buildAndExpand(stock.getId()).toUri();
         MessageResponse message = new MessageResponse("new data created");
         return ResponseEntity.created(uri).body(message);
@@ -51,7 +51,7 @@ public class StockController {
 
     @PatchMapping("/stockList/{id}")
     public ResponseEntity<MessageResponse> update(@PathVariable Integer id, @RequestBody @Validated UpdateRequest updateRequest) {
-        stockListService.update(updateRequest.convertToStockList(id));
+        stockListService.update(updateRequest.convertToStock(id));
         MessageResponse message = new MessageResponse("data updated");
         return ResponseEntity.ok(message);
     }
