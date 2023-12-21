@@ -1,6 +1,6 @@
-package com.stock.stocklist.controller.request;
+package com.stock.stock.controller.request;
 
-import com.stock.stocklist.entity.StockList;
+import com.stock.stock.entity.Stock;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -12,7 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 
 @AllArgsConstructor
-public class UpdateRequest {
+public class InsertRequest {
 
     @NotBlank(message = "試薬名が入力されていません")
     @Length(min = 1, max = 100, message = "{min}文字以上、{max}文字以内で入力してください")
@@ -33,8 +33,8 @@ public class UpdateRequest {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate purchase;
 
-    public StockList convertToStockList(Integer id) {
-        StockList convert = new StockList(id, name, grade, quantity, unit, purchase);
+    public Stock convertToStock() {
+        Stock convert = new Stock(null, name, grade, quantity, unit, purchase);
         return convert;
     }
 

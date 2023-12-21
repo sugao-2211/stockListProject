@@ -1,11 +1,11 @@
-package com.stock.stocklist.controller;
+package com.stock.stock.controller;
 
-import com.stock.stocklist.controller.request.InsertRequest;
-import com.stock.stocklist.controller.request.UpdateRequest;
-import com.stock.stocklist.controller.response.MessageResponse;
-import com.stock.stocklist.controller.response.StockListResponse;
-import com.stock.stocklist.entity.StockList;
-import com.stock.stocklist.service.StockListService;
+import com.stock.stock.controller.request.InsertRequest;
+import com.stock.stock.controller.request.UpdateRequest;
+import com.stock.stock.controller.response.MessageResponse;
+import com.stock.stock.controller.response.StockResponse;
+import com.stock.stock.entity.Stock;
+import com.stock.stock.service.StockService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -23,42 +23,42 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class StockListController {
+public class StockController {
 
-    private final StockListService stockListService;
+    private final StockService stockService;
 
-    @GetMapping("/stockList")
-    public ResponseEntity<List<StockListResponse>> findData(String name) {
-        List<StockList> stockList = stockListService.findData(name);
-        List<StockListResponse> allData = stockList.stream().map(StockListResponse::new).toList();
+    @GetMapping("/stock")
+    public ResponseEntity<List<StockResponse>> findData(String name) {
+        List<Stock> stock = stockService.findData(name);
+        List<StockResponse> allData = stock.stream().map(StockResponse::new).toList();
         return ResponseEntity.ok(allData);
     }
 
-    @GetMapping("/stockList/{id}")
-    public ResponseEntity<StockListResponse> partData(@PathVariable int id) {
-        StockList stockList = stockListService.findById(id);
-        StockListResponse partData = new StockListResponse(stockList);
+    @GetMapping("/stock/{id}")
+    public ResponseEntity<StockResponse> partData(@PathVariable int id) {
+        Stock stock = stockService.findById(id);
+        StockResponse partData = new StockResponse(stock);
         return ResponseEntity.ok(partData);
     }
 
-    @PostMapping("/stockList")
+    @PostMapping("/stock")
     public ResponseEntity<MessageResponse> insert(@RequestBody @Validated InsertRequest insertRequest, UriComponentsBuilder uriComponentsBuilder) {
-        StockList stockList = stockListService.insert(insertRequest.convertToStockList());
-        URI uri = uriComponentsBuilder.path("/stockList/{id}").buildAndExpand(stockList.getId()).toUri();
+        Stock stock = stockService.insert(insertRequest.convertToStock());
+        URI uri = uriComponentsBuilder.path("/stockList/{id}").buildAndExpand(stock.getId()).toUri();
         MessageResponse message = new MessageResponse("new data created");
         return ResponseEntity.created(uri).body(message);
     }
 
-    @PatchMapping("/stockList/{id}")
+    @PatchMapping("/stock/{id}")
     public ResponseEntity<MessageResponse> update(@PathVariable Integer id, @RequestBody @Validated UpdateRequest updateRequest) {
-        stockListService.update(updateRequest.convertToStockList(id));
+        stockService.update(updateRequest.convertToStock(id));
         MessageResponse message = new MessageResponse("data updated");
         return ResponseEntity.ok(message);
     }
 
-    @DeleteMapping("/stockList/{id}")
+    @DeleteMapping("/stock/{id}")
     public ResponseEntity<MessageResponse> delete(@PathVariable Integer id) {
-        stockListService.delete(id);
+        stockService.delete(id);
         MessageResponse message = new MessageResponse("data deleted");
         return ResponseEntity.ok(message);
     }

@@ -1,13 +1,13 @@
-package com.stock.stocklist;
+package com.stock.stock;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class StocklistApplicationTests {
+class StockApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
