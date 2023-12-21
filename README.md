@@ -174,7 +174,7 @@ https://github.com/users/sugao-2211/projects/1
 ##
 
 <details>
-<summary>findData()メソッド(クエリパラメータ検索)のService単体テスト</summary>
+<summary>findData()メソッドのService単体テスト</summary>
 
 - findData()メソッドのService単体テスト
     - 在庫名を指定しなかったときにfindAllメソッド呼び出されて全件の在庫情報が返却されること
