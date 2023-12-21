@@ -119,4 +119,18 @@ public class StockApiIntegrationTest {
 
     }
 
+    @Test
+    @DataSet(value = "datasets/stockList.yml")
+    @Transactional
+    void 存在しない在庫名を指定したときに空のリストが返されること() throws Exception {
+        String response = mockMvc.perform(MockMvcRequestBuilders.get("/stock?name=硝酸"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
+
+        JSONAssert.assertEquals("""
+                []
+                  """, response, JSONCompareMode.STRICT);
+
+    }
+
 }
