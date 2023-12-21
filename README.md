@@ -239,6 +239,21 @@ https://github.com/users/sugao-2211/projects/1
 
 </details>
 
+##
+
+<details>
+<summary>結合テスト(全件取得)</summary>
+
+- 結合テスト(全件取得)
+    - 全件の在庫情報が取得できること
+
+  https://github.com/sugao-2211/stockListProject/blob/0089bfae7c672a53d66ea7131b4a51ce630a0f4f/src/test/java/com/stock/stock/integrationtest/StockApiIntegrationTest.java#L1-L91
+
+- 実行結果
+  <img width="1396" alt="スクリーンショット 2023-12-21 13 03 29" src="https://github.com/sugao-2211/stockListProject/assets/141313076/e0a19644-779d-476e-85cc-a86517072f85">
+
+</details>
+
 </details>
 
 ***
