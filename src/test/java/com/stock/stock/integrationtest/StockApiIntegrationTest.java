@@ -165,4 +165,25 @@ public class StockApiIntegrationTest {
 
     }
 
+    @Test
+    @DataSet(value = "datasets/stockList.yml")
+    @Transactional
+    void 存在するidの在庫情報が取得できること() throws Exception {
+        String response = mockMvc.perform(MockMvcRequestBuilders.get("/stock/4"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
+
+        JSONAssert.assertEquals("""
+                {
+                 "id": 4,
+                 "name": "グルコアミラーゼ",
+                 "grade": "生化学用",
+                 "quantity": "10,000",
+                 "unit": "unit",
+                 "purchase": "2023-10-11"
+                }
+                """, response, JSONCompareMode.STRICT);
+
+    }
+
 }
