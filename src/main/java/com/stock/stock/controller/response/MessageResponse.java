@@ -1,4 +1,4 @@
-package com.stock.stocklist.controller.response;
+package com.stock.stock.controller.response;
 
 public class MessageResponse {
     private String message;

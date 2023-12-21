@@ -1,10 +1,10 @@
-package com.stock.stocklist.controller.response;
+package com.stock.stock.controller.response;
 
-import com.stock.stocklist.entity.StockList;
+import com.stock.stock.entity.Stock;
 
 import java.time.LocalDate;
 
-public class StockListResponse {
+public class StockResponse {
     private int id;
     private String name;
     private String grade;
@@ -12,13 +12,13 @@ public class StockListResponse {
     private String unit;
     private LocalDate purchase;
 
-    public StockListResponse(StockList stockList) {
-        this.id = stockList.getId();
-        this.name = stockList.getName();
-        this.grade = stockList.getGrade();
-        this.quantity = stockList.getQuantity();
-        this.unit = stockList.getUnit();
-        this.purchase = stockList.getPurchase();
+    public StockResponse(Stock stock) {
+        this.id = stock.getId();
+        this.name = stock.getName();
+        this.grade = stock.getGrade();
+        this.quantity = stock.getQuantity();
+        this.unit = stock.getUnit();
+        this.purchase = stock.getPurchase();
     }
 
     public int getId() {

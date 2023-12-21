@@ -220,6 +220,25 @@ https://github.com/users/sugao-2211/projects/1
 
 </details>
 
+##
+
+<details>
+<summary>findById()メソッドのDB単体テスト</summary>
+
+- findById()メソッドのDB単体テスト
+    - idを指定したときに該当する在庫情報が取得できること
+    - 存在しないidを指定したときに空のOptionalが返されること
+
+  https://github.com/sugao-2211/stockListProject/blob/0b4cbbca4335d147a3c9863cffdb2ee60174b0f3/src/test/java/com/stock/stocklist/mapper/StockListMapperTest.java#L60-L76
+
+- 実行結果
+    - idを指定したときに該当する在庫情報が取得できること
+      <img width="1411" alt="スクリーンショット 2023-12-18 22 22 07" src="https://github.com/sugao-2211/stockListProject/assets/141313076/b7fbf184-cec9-433b-97fa-7673e4ea4ea2">
+    - 存在しないidを指定したときに空のOptionalが返されること
+      <img width="1380" alt="スクリーンショット 2023-12-18 22 22 37" src="https://github.com/sugao-2211/stockListProject/assets/141313076/e985359c-66c5-4bae-adb0-6bd69371ba67">
+
+</details>
+
 </details>
 
 ***
