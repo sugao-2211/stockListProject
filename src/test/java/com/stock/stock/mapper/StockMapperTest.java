@@ -29,15 +29,16 @@ class StockMapperTest {
     void 全ての在庫情報が取得できること() {
         List<Stock> stockList = stockListMapper.findAll();
         assertThat(stockList)
-                .hasSize(6)
+                .hasSize(8)
                 .contains(
                         new Stock(1, "メタノール", "HPLC用", 3, "L", LocalDate.of(2023, 5, 24)),
                         new Stock(2, "塩化カリウム", "特級", 500, "g", LocalDate.of(2023, 7, 19)),
                         new Stock(3, "硫酸ナトリウム", "特級", 5, "kg", LocalDate.of(2022, 8, 30)),
                         new Stock(4, "グルコアミラーゼ", "生化学用", 10000, "unit", LocalDate.of(2023, 10, 11)),
-                        new Stock(5, "硫酸", "硫酸呈色用", 500, "ｍL", LocalDate.of(2023, 4, 5)),
-                        new Stock(6, "ピリドキシン塩酸塩", "日本薬局方標準品", 200, "mg", LocalDate.of(2023, 9, 22))
-                );
+                        new Stock(5, "硫酸", "硫酸呈色用", 500, "mL", LocalDate.of(2023, 4, 5)),
+                        new Stock(6, "ピリドキシン塩酸塩", "日本薬局方標準品", 200, "mg", LocalDate.of(2023, 9, 22)),
+                        new Stock(7, "亜硫酸ナトリウム", "特級", 25, "g", LocalDate.of(2023, 7, 7)),
+                        new Stock(8, "アミド硫酸", "認証標準物質", 50, "g", LocalDate.of(2023, 4, 15)));
     }
 
     @Test

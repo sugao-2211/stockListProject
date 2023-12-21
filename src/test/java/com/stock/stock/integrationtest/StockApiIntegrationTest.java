@@ -82,8 +82,85 @@ public class StockApiIntegrationTest {
                    "quantity": "200",
                    "unit": "mg",
                    "purchase": "2023-09-22"
+                  },
+                  {
+                   "id": 7,
+                   "name": "亜硫酸ナトリウム",
+                   "grade": "特級",
+                   "quantity": "25",
+                   "unit": "g",
+                   "purchase": "2023-07-07"
+                  },
+                  {
+                   "id": 8,
+                   "name": "アミド硫酸",
+                   "grade": "認証標準物質",
+                   "quantity": "50",
+                   "unit": "g",
+                   "purchase": "2023-04-15"
                   }
                 ]
+                  """, response, JSONCompareMode.STRICT);
+
+    }
+
+    @Test
+    @DataSet(value = "datasets/stockList.yml")
+    @Transactional
+    void 存在する在庫名の在庫情報が取得できること() throws Exception {
+        String response = mockMvc.perform(MockMvcRequestBuilders.get("/stock?name=硫酸"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
+
+        JSONAssert.assertEquals("""
+                [
+                  {
+                   "id": 3,
+                   "name": "硫酸ナトリウム",
+                   "grade": "特級",
+                   "quantity": "5",
+                   "unit": "kg",
+                   "purchase": "2022-08-30"
+                  },
+                  {
+                   "id": 5,
+                   "name": "硫酸",
+                   "grade": "硫酸呈色用",
+                   "quantity": "500",
+                   "unit": "mL",
+                   "purchase": "2023-04-05"
+                  },
+                  {
+                   "id": 7,
+                   "name": "亜硫酸ナトリウム",
+                   "grade": "特級",
+                   "quantity": "25",
+                   "unit": "g",
+                   "purchase": "2023-07-07"
+                  },
+                  {
+                   "id": 8,
+                   "name": "アミド硫酸",
+                   "grade": "認証標準物質",
+                   "quantity": "50",
+                   "unit": "g",
+                   "purchase": "2023-04-15"
+                  }
+                ]
+                  """, response, JSONCompareMode.STRICT);
+
+    }
+
+    @Test
+    @DataSet(value = "datasets/stockList.yml")
+    @Transactional
+    void 存在しない在庫名を指定したときに空のリストが返されること() throws Exception {
+        String response = mockMvc.perform(MockMvcRequestBuilders.get("/stock?name=硝酸"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
+
+        JSONAssert.assertEquals("""
+                []
                   """, response, JSONCompareMode.STRICT);
 
     }
