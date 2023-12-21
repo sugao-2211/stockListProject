@@ -276,7 +276,7 @@ https://github.com/users/sugao-2211/projects/1
     - 存在する在庫名の在庫情報が取得できること
     - 存在しない在庫名を指定したときに空のリストが返されること
 
-  https://github.com/sugao-2211/stockListProject/blob/0089bfae7c672a53d66ea7131b4a51ce630a0f4f/src/test/java/com/stock/stock/integrationtest/StockApiIntegrationTest.java#L1-L91
+  https://github.com/sugao-2211/stockListProject/blob/df4ff7add3f37d44f499653f29eb604274f930f3/src/test/java/com/stock/stock/integrationtest/StockApiIntegrationTest.java#L91-L135
 
 - 実行結果
     - 存在する在庫名の在庫情報が取得できること
