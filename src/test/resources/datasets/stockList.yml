@@ -27,7 +27,7 @@ stock_list:
     name: "硫酸"
     grade: "硫酸呈色用"
     quantity: 500
-    unit: "ｍL"
+    unit: "mL"
     purchase: "2023-04-05"
   - id: 6
     name: "ピリドキシン塩酸塩"
