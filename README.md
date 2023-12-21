@@ -86,6 +86,9 @@ https://github.com/users/sugao-2211/projects/1
     - 存在しないidを指定したときに空のOptionalが返されること
 - 結合テスト(全件取得)
     - 全件の在庫情報が取得できること
+- 結合テスト(在庫名による取得)
+    - 存在する在庫名の在庫情報が取得できること
+    - 存在しない在庫名を指定したときに空のリストが返されること
 
 ##
 
@@ -153,7 +156,7 @@ https://github.com/users/sugao-2211/projects/1
     - 実行結果
       <img width="1004" alt="スクリーンショット 2023-10-31 16 17 58" src="https://github.com/sugao-2211/stockListProject/assets/141313076/119ed0ee-64ee-447a-befc-c185ded3dc94">
 
-</details>
+</details>  
 
 ##
 
@@ -261,6 +264,25 @@ https://github.com/users/sugao-2211/projects/1
 
 - 実行結果
   <img width="1396" alt="スクリーンショット 2023-12-21 13 03 29" src="https://github.com/sugao-2211/stockListProject/assets/141313076/e0a19644-779d-476e-85cc-a86517072f85">
+
+</details>
+
+##
+
+<details>
+<summary>結合テスト(在庫名による取得)</summary>
+
+- 結合テスト(在庫名による取得)
+    - 存在する在庫名の在庫情報が取得できること
+    - 存在しない在庫名を指定したときに空のリストが返されること
+
+  https://github.com/sugao-2211/stockListProject/blob/0089bfae7c672a53d66ea7131b4a51ce630a0f4f/src/test/java/com/stock/stock/integrationtest/StockApiIntegrationTest.java#L1-L91
+
+- 実行結果
+    - 存在する在庫名の在庫情報が取得できること
+      <img width="1392" alt="スクリーンショット 2023-12-21 15 39 02" src="https://github.com/sugao-2211/stockListProject/assets/141313076/7ec35694-a4bf-4352-ab62-67a50ff6ab19">
+    - 存在しない在庫名を指定したときに空のリストが返されること
+      <img width="1405" alt="スクリーンショット 2023-12-21 15 42 55" src="https://github.com/sugao-2211/stockListProject/assets/141313076/c0fac5e8-5134-47fe-a67c-58b301d3d9ee">
 
 </details>
 
