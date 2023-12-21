@@ -28,7 +28,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 在庫情報が全件取得できること() throws Exception {
+    void 全件の在庫情報が取得できること() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.get("/stock"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
