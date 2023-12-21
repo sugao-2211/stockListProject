@@ -113,6 +113,22 @@ public class StockApiIntegrationTest {
                    "quantity": "500",
                    "unit": "mL",
                    "purchase": "2023-04-05"
+                  },
+                  {
+                   "id": 7,
+                   "name": "亜硫酸ナトリウム",
+                   "grade": "特級",
+                   "quantity": "25",
+                   "unit": "g",
+                   "purchase": "2023-07-07"
+                  },
+                  {
+                   "id": 8,
+                   "name": "アミド硫酸",
+                   "grade": "認証標準物質",
+                   "quantity": "50",
+                   "unit": "g",
+                   "purchase": "2023-04-15"
                   }
                 ]
                   """, response, JSONCompareMode.STRICT);
