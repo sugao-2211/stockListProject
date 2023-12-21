@@ -69,13 +69,23 @@ https://github.com/users/sugao-2211/projects/1
     - id「4」で検索
 - パスパラメータ(id)の検索における例外処理
     - id「9」で検索し例外処理を発生
-- findById()メソッド(パスパラメータ検索)のService単体テスト
-    - 存在する在庫のidをパスパラメータに指定したときに正常に在庫の情報が返されること
-    - 存在しないIDをパスパラメータに指定したときにNotFoundExceptionが返されること
-- findData()メソッド(クエリパラメータ検索)のService単体テスト
-    - クエリパラメータを指定しなかったときにfindAllメソッドが呼び出されること
-    - 存在する名前をクエリパラメータに指定したときにfindByNameメソッドが呼び出されること
-    - 存在しない名前をクエリパラメータに指定したときにNotFoundExceptionが返されること
+- findById()メソッドのService単体テスト
+    - 存在する在庫のidを指定したときに正常に在庫の情報が返されること
+    - 存在しないidを指定したときにNotFoundExceptionが返されること
+- findData()メソッドのService単体テスト
+    - 在庫名を指定しなかったときにfindAllメソッドが呼び出されること
+    - 在庫名を指定したときにfindByNameメソッドが呼び出されること
+    - 存在しない在庫名を指定したときに空のリストが返されること
+- findAll()メソッドのDB単体テスト
+    - findAll()メソッドによって全件の在庫情報が取得できること
+- findByName()メソッドのDB単体テスト
+    - 在庫名を指定したときに該当する在庫情報が取得できること
+    - 存在しない在庫名を指定したときに空のリストが返されること
+- findById()メソッドのDB単体テスト
+    - idを指定したときに該当する在庫情報が取得できること
+    - 存在しないidを指定したときに空のOptionalが返されること
+- 結合テスト(全件取得)
+    - 全件の在庫情報が取得できること
 
 ##
 
@@ -148,11 +158,11 @@ https://github.com/users/sugao-2211/projects/1
 ##
 
 <details>
-<summary>findById()メソッド(パスパラメータ検索)のService単体テスト</summary>
+<summary>findById()メソッドのService単体テスト</summary>
 
 - findById()メソッド(パスパラメータ検索)のService単体テスト
-    - 存在する在庫のidをパスパラメータに指定したときに正常に在庫の情報が返されること
-    - 存在しないIDをパスパラメータに指定したときにNotFoundExceptionが返されること
+    - 存在する在庫のidを指定したときに正常に在庫の情報が返されること
+    - 存在しないidを指定したときにNotFoundExceptionが返されること
 
   https://github.com/sugao-2211/stockListProject/blob/e8d7c8dd4d7a8342de67f6051d5ed96f452e8fd8/src/test/java/com/stock/stocklist/service/StockListServiceTest.java#L1-L59
 
@@ -164,21 +174,21 @@ https://github.com/users/sugao-2211/projects/1
 ##
 
 <details>
-<summary>findData()メソッド(クエリパラメータ検索)のService単体テスト</summary>
+<summary>findData()メソッドのService単体テスト</summary>
 
-- findData()メソッド(クエリパラメータ検索)のService単体テスト
-    - 在庫の名前を指定しなかったときにfindAllメソッド呼び出されて全件の在庫情報が返却されること
-    - 存在する名前を指定したときにfindByNameメソッドが呼び出されて該当する在庫情報が返却されること
-    - 存在しない名前を指定したときに空のListが返されること
+- findData()メソッドのService単体テスト
+    - 在庫名を指定しなかったときにfindAllメソッド呼び出されて全件の在庫情報が返却されること
+    - 存在する在庫名を指定したときにfindByNameメソッドが呼び出されて該当する在庫情報が返却されること
+    - 存在しない在庫名を指定したときに空のListが返されること
 
   https://github.com/sugao-2211/stockListProject/blob/dac5df8cb3816a8ec91aad88ea8d47a3b48f2b52/src/test/java/com/stock/stocklist/service/StockListServiceTest.java#L52-L91
 
 - 実行結果
-    - 在庫の名前を指定しなかったときにfindAllメソッド呼び出されて全件の在庫情報が返却されること
+    - 在庫名を指定しなかったときにfindAllメソッド呼び出されて全件の在庫情報が返却されること
       <img width="1373" alt="スクリーンショット 2023-12-13 10 56 07" src="https://github.com/sugao-2211/stockListProject/assets/141313076/d63495d2-e7ed-46fe-be2b-5bd4a214aa6b">
-    - 存在する名前を指定したときにfindByNameメソッドが呼び出されて該当する在庫情報が返却されること
+    - 存在する在庫名を指定したときにfindByNameメソッドが呼び出されて該当する在庫情報が返却されること
       <img width="1380" alt="スクリーンショット 2023-12-13 10 56 29" src="https://github.com/sugao-2211/stockListProject/assets/141313076/a394563c-2254-4620-9f19-8fe864001f6b">
-    - 存在しない名前を指定したときに空のListが返されること
+    - 存在しない在庫名を指定したときに空のListが返されること
       <img width="1362" alt="スクリーンショット 2023-12-14 15 39 45" src="https://github.com/sugao-2211/stockListProject/assets/141313076/e893ad2f-ff4e-4909-be49-2f5f541381d2">
 
 </details>
@@ -236,6 +246,21 @@ https://github.com/users/sugao-2211/projects/1
       <img width="1411" alt="スクリーンショット 2023-12-18 22 22 07" src="https://github.com/sugao-2211/stockListProject/assets/141313076/b7fbf184-cec9-433b-97fa-7673e4ea4ea2">
     - 存在しないidを指定したときに空のOptionalが返されること
       <img width="1380" alt="スクリーンショット 2023-12-18 22 22 37" src="https://github.com/sugao-2211/stockListProject/assets/141313076/e985359c-66c5-4bae-adb0-6bd69371ba67">
+
+</details>
+
+##
+
+<details>
+<summary>結合テスト(全件取得)</summary>
+
+- 結合テスト(全件取得)
+    - 全件の在庫情報が取得できること
+
+  https://github.com/sugao-2211/stockListProject/blob/0089bfae7c672a53d66ea7131b4a51ce630a0f4f/src/test/java/com/stock/stock/integrationtest/StockApiIntegrationTest.java#L1-L91
+
+- 実行結果
+  <img width="1396" alt="スクリーンショット 2023-12-21 13 03 29" src="https://github.com/sugao-2211/stockListProject/assets/141313076/e0a19644-779d-476e-85cc-a86517072f85">
 
 </details>
 
