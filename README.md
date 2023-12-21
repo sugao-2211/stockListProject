@@ -281,8 +281,8 @@ https://github.com/users/sugao-2211/projects/1
 - 実行結果
     - 存在する在庫名の在庫情報が取得できること
       <img width="1385" alt="スクリーンショット 2023-12-21 19 07 36" src="https://github.com/sugao-2211/stockListProject/assets/141313076/5ff957dd-35fd-4c23-b823-be6cc1c58752">
-        - 存在しない在庫名を指定したときに空のリストが返されること
-          <img width="1405" alt="スクリーンショット 2023-12-21 15 42 55" src="https://github.com/sugao-2211/stockListProject/assets/141313076/c0fac5e8-5134-47fe-a67c-58b301d3d9ee">
+    - 存在しない在庫名を指定したときに空のリストが返されること
+      <img width="1405" alt="スクリーンショット 2023-12-21 15 42 55" src="https://github.com/sugao-2211/stockListProject/assets/141313076/c0fac5e8-5134-47fe-a67c-58b301d3d9ee">
 
 </details>
 
