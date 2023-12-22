@@ -298,7 +298,7 @@ https://github.com/users/sugao-2211/projects/1
     - 存在するidの在庫情報が取得できること
     - 存在しないidを指定したときにNotFoundExceptionが返されること
 
-  https://github.com/sugao-2211/stockListProject/blob/df4ff7add3f37d44f499653f29eb604274f930f3/src/test/java/com/stock/stock/integrationtest/StockApiIntegrationTest.java#L91-L135
+  https://github.com/sugao-2211/stockListProject/blob/b4a22715322aad9316ee27bfa95b23a61c7bdb49/src/test/java/com/stock/stock/integrationtest/StockApiIntegrationTest.java#L170-L211
 
 - 実行結果
     - 存在するidの在庫情報が取得できること
