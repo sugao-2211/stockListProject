@@ -3,8 +3,10 @@ package com.stock.stock.integrationtest;
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.spring.api.DBRider;
 import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.Customization;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
+import org.skyscreamer.jsonassert.comparator.CustomComparator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -162,6 +164,48 @@ public class StockApiIntegrationTest {
         JSONAssert.assertEquals("""
                 []
                   """, response, JSONCompareMode.STRICT);
+
+    }
+
+    @Test
+    @DataSet(value = "datasets/stockList.yml")
+    @Transactional
+    void 存在するidの在庫情報が取得できること() throws Exception {
+        String response = mockMvc.perform(MockMvcRequestBuilders.get("/stock/4"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
+
+        JSONAssert.assertEquals("""
+                {
+                 "id": 4,
+                 "name": "グルコアミラーゼ",
+                 "grade": "生化学用",
+                 "quantity": "10,000",
+                 "unit": "unit",
+                 "purchase": "2023-10-11"
+                }
+                """, response, JSONCompareMode.STRICT);
+
+    }
+
+    @Test
+    @DataSet(value = "datasets/stockList.yml")
+    @Transactional
+    void 存在しないidを指定したときにNotFoundExcptionがスローされること() throws Exception {
+        String response = mockMvc.perform(MockMvcRequestBuilders.get("/stock/99"))
+                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
+
+        JSONAssert.assertEquals("""
+                {
+                 "message" :"data not found",
+                 "timestamp":"2023-12-21T12:00:00.511021+09:00[Asia/Tokyo]",
+                 "error":"Not Found",
+                 "path":"/stock/99",
+                 "status":"404"
+                }
+                """, response, new CustomComparator(JSONCompareMode.STRICT,
+                new Customization("timestamp", ((o1, o2) -> true))));
 
     }
 
