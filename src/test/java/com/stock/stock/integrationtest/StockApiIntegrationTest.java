@@ -30,7 +30,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 全件の在庫情報が取得できること() throws Exception {
+    void 在庫名を指定しなかったときにステータスコード200が返され全件の在庫情報を取得すること() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.get("/stock"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
@@ -109,7 +109,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 存在する在庫名の在庫情報が取得できること() throws Exception {
+    void 存在する在庫名を指定したときにステータスコード200が返され該当する在庫情報を取得すること() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.get("/stock?name=硫酸"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
@@ -156,7 +156,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 存在しない在庫名を指定したときに空のリストが返されること() throws Exception {
+    void 存在しない在庫名を指定したときにステータスコード200が返され空のリストを取得すること() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.get("/stock?name=硝酸"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
@@ -170,7 +170,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 存在するidの在庫情報が取得できること() throws Exception {
+    void 存在するidを指定したときにステータスコード200が返され該当する在庫情報を取得すること() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.get("/stock/4"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
@@ -191,7 +191,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 存在しないidを指定したときにNotFoundExcptionがスローされること() throws Exception {
+    void 存在しないidを指定したときにステータスコード404が返されること() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.get("/stock/99"))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
