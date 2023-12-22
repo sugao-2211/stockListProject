@@ -191,7 +191,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 存在しないidの指定したときにNotFoundExcptionがスローされること() throws Exception {
+    void 存在しないidを指定したときにNotFoundExcptionがスローされること() throws Exception {
         String response = mockMvc.perform(MockMvcRequestBuilders.get("/stock/99"))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
                 .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
