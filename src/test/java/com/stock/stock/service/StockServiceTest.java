@@ -16,6 +16,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
@@ -56,14 +57,12 @@ class StockServiceTest {
                 new Stock(2, "塩化カリウム", "特級", 500, "g", LocalDate.parse("2023-07-19")),
                 new Stock(3, "硫酸ナトリウム", "特級", 5, "kg", LocalDate.parse("2023-10-11"))
         );
-
         doReturn(stockList).when(stockListMapper).findAll();
 
         List<Stock> actual = stockListService.findData(null);
         assertThat(actual).isEqualTo(stockList);
         verify(stockListMapper, times(1)).findAll();
         verify(stockListMapper, never()).findByName("メタノール");
-
     }
 
     @Test
@@ -89,4 +88,13 @@ class StockServiceTest {
         verify(stockListMapper, never()).findAll();
     }
 
+    @Test
+    public void 新しい在庫情報が正常に登録処理が実行されること() throws Exception {
+        Stock stock = new Stock(null, "アセトニトリル", "HPLC用", 3, "L", LocalDate.parse("2024-05-13"));
+        doNothing().when(stockListMapper).insert(stock);
+
+        Stock actual = stockListService.insert(stock);
+        assertThat(actual).isEqualTo(stock);
+        verify(stockListMapper, times(1)).insert(stock);
+    }
 }
