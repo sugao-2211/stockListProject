@@ -75,4 +75,63 @@ class StockMapperTest {
         assertThat(stockList).isEmpty();
     }
 
+    @Test
+    @DataSet(value = "datasets/stockList.yml")
+    @Transactional
+    void 新しい在庫情報が登録できること() {
+        Stock stock = new Stock(null, "トルエン", "特級", 100, "mL", LocalDate.of(2024, 2, 18));
+        stockListMapper.insert(stock);
+
+        // 結果確認用
+        List<Stock> stocks = stockListMapper.findAll();
+        assertThat(stocks).hasSize(9);
+    }
+
+    @Test
+    @DataSet(value = "datasets/stockList.yml")
+    @Transactional
+    void idを指定したときに該当する在庫情報が更新できること() {
+        Stock stock = new Stock(1, "メタノール", "特級", 3, "L", LocalDate.of(2023, 5, 24));
+        stockListMapper.update(stock);
+
+        // 結果確認用
+        Optional<Stock> stockList = stockListMapper.findById(1);
+        assertThat(stockList)
+                .contains(new Stock(1, "メタノール", "特級", 3, "L", LocalDate.of(2023, 5, 24)));
+    }
+
+    @Test
+    @DataSet(value = "datasets/stockList.yml")
+    @Transactional
+    void 存在しないidを指定したときに在庫情報が更新されないこと() {
+        Stock stock = new Stock(99, "メタノール", "特級", 3, "L", LocalDate.of(2023, 5, 24));
+        stockListMapper.update(stock);
+
+        // 結果確認用
+        Optional<Stock> stockList = stockListMapper.findById(1);
+        assertThat(stockList)
+                .contains(new Stock(1, "メタノール", "HPLC用", 3, "L", LocalDate.of(2023, 5, 24)));
+    }
+
+    @Test
+    @DataSet(value = "datasets/stockList.yml")
+    @Transactional
+    void idを指定したときに該当する在庫情報が削除できること() {
+        stockListMapper.delete(1);
+
+        // 結果確認用
+        List<Stock> stocks = stockListMapper.findAll();
+        assertThat(stocks).hasSize(7);
+    }
+
+    @Test
+    @DataSet(value = "datasets/stockList.yml")
+    @Transactional
+    void 存在しないidを指定したときに在庫情報が削除されないこと() {
+        stockListMapper.delete(99);
+
+        // 結果確認用
+        List<Stock> stocks = stockListMapper.findAll();
+        assertThat(stocks).hasSize(8);
+    }
 }
