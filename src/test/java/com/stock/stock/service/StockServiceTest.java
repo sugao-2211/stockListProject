@@ -114,7 +114,7 @@ class StockServiceTest {
     }
 
     @Test
-    public void 存在しないidを指定したときに在庫情報が更新されないこと() {
+    public void 在庫情報を更新する際に存在しないidを指定すると例外をスローすること() {
         doReturn(Optional.empty()).when(stockListMapper).findById(99);
         assertThrows(NotFoundException.class, () -> {
             stockListService.update(new Stock(99, "メタノール", "HPLC用", 3, "L", LocalDate.parse("2023-05-24")));
@@ -130,7 +130,7 @@ class StockServiceTest {
     }
 
     @Test
-    public void 存在しないidを指定したときに在庫情報が削除されないこと() {
+    public void 在庫情報を削除する際に存在しないidを指定すると例外をスローすること() {
         doReturn(Optional.empty()).when(stockListMapper).findById(99);
         assertThrows(NotFoundException.class, () -> {
             stockListService.delete(99);

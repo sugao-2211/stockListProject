@@ -505,6 +505,9 @@ https://github.com/users/sugao-2211/projects/1
 - update()メソッドのDB単体テスト
     - update()メソッドによってidを指定したときに該当する在庫情報が更新できること
     - 存在しないidを指定したときに在庫情報が更新されないこと
+- update()メソッドのService単体テスト
+    - update()メソッドによってidを指定したときに該当する在庫情報が更新できること
+    - 在庫情報を更新する際に存在しないidを指定すると例外をスローすること
 
 ##
 
@@ -638,15 +641,15 @@ https://github.com/users/sugao-2211/projects/1
 
 - update()メソッドのService単体テスト
     - update()メソッドによってidを指定したときに該当する在庫情報が更新できること
-    - 存在しないidを指定したときに在庫情報が更新されないこと
+    - 在庫情報を更新する際に存在しないidを指定すると例外をスローすること
 
   https://github.com/sugao-2211/stockListProject/blob/0b85e9b44ccefae4163983bfc801537e8fa5dee2/src/test/java/com/stock/stock/service/StockServiceTest.java#L103-L122
 
 - 実行結果
     - update()メソッドによってidを指定したときに該当する在庫情報が更新できること
       <img width="1129" alt="スクリーンショット 2024-09-28 23 48 04" src="https://github.com/user-attachments/assets/b2b7b3a4-3af4-4114-9eb9-0978e9bfd779">
-    - 存在しないidを指定したときに在庫情報が更新されないこと
-      <img width="1016" alt="スクリーンショット 2024-09-28 23 48 22" src="https://github.com/user-attachments/assets/f446aa2d-9cf6-4c95-82f7-836f995fb30e">
+    - 在庫情報を更新する際に存在しないidを指定すると例外をスローすること
+      <img width="1016" alt="スクリーンショット 2024-09-29 7 19 26" src="https://github.com/user-attachments/assets/676af2ba-9c9d-40f0-aeb8-13efdee377b4">
 
 </details>
 
@@ -668,6 +671,9 @@ https://github.com/users/sugao-2211/projects/1
 - delete()メソッドのDB単体テスト
     - delete()メソッドによってidを指定したときに該当する在庫情報が削除できること
     - 存在しないidを指定したときに在庫情報が削除されないこと
+- delete()メソッドのService単体テスト
+    - delete()メソッドによってidを指定したときに該当する在庫情報が削除できること
+    - 在庫情報を削除する際に存在しないidを指定すると例外をスローすること
 
 ##
 
@@ -736,15 +742,15 @@ https://github.com/users/sugao-2211/projects/1
 
 - delete()メソッドのService単体テスト
     - delete()メソッドによってidを指定したときに該当する在庫情報が削除できること
-    - 存在しないidを指定したときに在庫情報が削除されないこと
+    - 在庫情報を削除する際に存在しないidを指定すると例外をスローすること
 
   https://github.com/sugao-2211/stockListProject/blob/0b85e9b44ccefae4163983bfc801537e8fa5dee2/src/test/java/com/stock/stock/service/StockServiceTest.java#L124-L138
 
 - 実行結果
     - delete()メソッドによってidを指定したときに該当する在庫情報が削除できること
       <img width="955" alt="スクリーンショット 2024-09-28 23 54 07" src="https://github.com/user-attachments/assets/6110ccbd-1ca4-4957-b53a-902cde4f757e">
-    - 存在しないidを指定したときに在庫情報が削除されないこと
-      <img width="950" alt="スクリーンショット 2024-09-28 23 53 53" src="https://github.com/user-attachments/assets/10d370cf-5708-494a-b002-4ca2cbddc11f">
+    - 在庫情報を削除する際に存在しないidを指定すると例外をスローすること
+      <img width="950" alt="スクリーンショット 2024-09-29 7 21 24" src="https://github.com/user-attachments/assets/4bb26f16-f34e-436c-a259-4a3648ff3b2f">
 
 </details>
 
