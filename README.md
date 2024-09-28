@@ -339,6 +339,8 @@ https://github.com/users/sugao-2211/projects/1
     - quantityを文字列で入力した場合
     - quantityを小数で入力した場合
     - purchaseの形式が誤っている場合
+- insert()メソッドのDB単体テスト
+    - insert()メソッドによって新規の在庫情報が登録できること
 
 ##
 
@@ -436,6 +438,22 @@ https://github.com/users/sugao-2211/projects/1
 
 </details>
 
+##
+
+<details>
+<summary>insert()メソッドのDB単体テスト</summary>
+
+- insert()メソッドのDB単体テスト
+    - insert()メソッドによって新規の在庫情報が登録できること
+
+  https://github.com/sugao-2211/stockListProject/blob/fb29b26c3e01b26c6e38412a44cfce8a3f70a3e8/src/test/java/com/stock/stock/mapper/StockMapperTest.java#L78-L88
+
+- 実行結果
+  <img width="1001" alt="スクリーンショット 2024-09-26 22 57 38" src="https://github.com/user-attachments/assets/618ef261-46cb-4566-9ca9-bc983f9c0d8b">
+
+</details>
+
+
 </details>
 
 ***
@@ -470,6 +488,9 @@ https://github.com/users/sugao-2211/projects/1
     - quantityを文字列で入力した場合
     - quantityを小数で入力した場合
     - purchaseの形式が誤っている場合
+- update()メソッドのDB単体テスト
+    - update()メソッドによってidを指定したときに該当する在庫情報が更新できること
+    - 存在しないidを指定したときに在庫情報が更新されないこと
 
 ##
 
@@ -577,6 +598,25 @@ https://github.com/users/sugao-2211/projects/1
 
 </details>
 
+##
+
+<details>
+<summary>update()メソッドのDB単体テスト</summary>
+
+- update()メソッドのDB単体テスト
+    - update()メソッドによってidを指定したときに該当する在庫情報が更新できること
+    - 存在しないidを指定したときに在庫情報が更新されないこと
+
+  https://github.com/sugao-2211/stockListProject/blob/fb29b26c3e01b26c6e38412a44cfce8a3f70a3e8/src/test/java/com/stock/stock/mapper/StockMapperTest.java#L90-L114
+
+- 実行結果
+    - update()メソッドによってidを指定したときに該当する在庫情報が更新できること
+      <img width="1129" alt="スクリーンショット 2024-09-26 23 02 33" src="https://github.com/user-attachments/assets/cad1796d-df52-4454-bad6-68c3f2e354fb">
+    - 存在しないidを指定したときに在庫情報が更新されないこと
+      <img width="1016" alt="スクリーンショット 2024-09-26 23 02 57" src="https://github.com/user-attachments/assets/493a8e05-769a-4576-8099-ae87b3b3a9a1">
+
+</details>
+
 </details>
 
 ***
@@ -592,6 +632,9 @@ https://github.com/users/sugao-2211/projects/1
     - id: 6
 - 例外処理の確認 (NotFoundException)
     - 存在しないデータの削除
+- delete()メソッドのDB単体テスト
+    - delete()メソッドによってidを指定したときに該当する在庫情報が削除できること
+    - 存在しないidを指定したときに在庫情報が削除されないこと
 
 ##
 
@@ -631,6 +674,25 @@ https://github.com/users/sugao-2211/projects/1
     - 存在しないデータの削除(id：99を削除するリクエスト)
 - 実行結果  
   <img width="689" alt="スクリーンショット 2023-11-08 22 44 02" src="https://github.com/sugao-2211/stockListProject/assets/141313076/a959bd7f-0efc-4dda-8599-0af476b6e734">
+
+</details>
+
+##
+
+<details>
+<summary>delete()メソッドのDB単体テスト</summary>
+
+- delete()メソッドのDB単体テスト
+    - delete()メソッドによってidを指定したときに該当する在庫情報が削除できること
+    - 存在しないidを指定したときに在庫情報が削除されないこと
+
+  https://github.com/sugao-2211/stockListProject/blob/fb29b26c3e01b26c6e38412a44cfce8a3f70a3e8/src/test/java/com/stock/stock/mapper/StockMapperTest.java#L116-L136
+
+- 実行結果
+    - delete()メソッドによってidを指定したときに該当する在庫情報が削除できること
+      <img width="955" alt="スクリーンショット 2024-09-26 23 10 25" src="https://github.com/user-attachments/assets/2e3132a8-0d1b-4a84-807a-608c109982b0">
+    - 存在しないidを指定したときに在庫情報が削除されないこと
+      <img width="950" alt="スクリーンショット 2024-09-26 23 12 12" src="https://github.com/user-attachments/assets/cf262c5f-75a1-4f8c-a673-f904be5d0298">
 
 </details>
 
