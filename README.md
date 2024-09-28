@@ -453,6 +453,20 @@ https://github.com/users/sugao-2211/projects/1
 
 </details>
 
+##
+
+<details>
+<summary>insert()メソッドのService単体テスト</summary>
+
+- insert()メソッドのService単体テスト
+    - insert()メソッドによって新規の在庫情報が登録できること
+
+  https://github.com/sugao-2211/stockListProject/blob/0b85e9b44ccefae4163983bfc801537e8fa5dee2/src/test/java/com/stock/stock/service/StockServiceTest.java#L93-L101
+
+- 実行結果
+  <img width="1001" alt="スクリーンショット 2024-09-28 23 27 03" src="https://github.com/user-attachments/assets/d5d02bf4-b229-4d6a-a74d-08e1d84290a7">
+
+</details>
 
 </details>
 
@@ -617,6 +631,25 @@ https://github.com/users/sugao-2211/projects/1
 
 </details>
 
+##
+
+<details>
+<summary>update()メソッドのService単体テスト</summary>
+
+- update()メソッドのService単体テスト
+    - update()メソッドによってidを指定したときに該当する在庫情報が更新できること
+    - 存在しないidを指定したときに在庫情報が更新されないこと
+
+  https://github.com/sugao-2211/stockListProject/blob/0b85e9b44ccefae4163983bfc801537e8fa5dee2/src/test/java/com/stock/stock/service/StockServiceTest.java#L103-L122
+
+- 実行結果
+    - update()メソッドによってidを指定したときに該当する在庫情報が更新できること
+      <img width="1129" alt="スクリーンショット 2024-09-28 23 48 04" src="https://github.com/user-attachments/assets/b2b7b3a4-3af4-4114-9eb9-0978e9bfd779">
+    - 存在しないidを指定したときに在庫情報が更新されないこと
+      <img width="1016" alt="スクリーンショット 2024-09-28 23 48 22" src="https://github.com/user-attachments/assets/f446aa2d-9cf6-4c95-82f7-836f995fb30e">
+
+</details>
+
 </details>
 
 ***
@@ -693,6 +726,25 @@ https://github.com/users/sugao-2211/projects/1
       <img width="955" alt="スクリーンショット 2024-09-26 23 10 25" src="https://github.com/user-attachments/assets/2e3132a8-0d1b-4a84-807a-608c109982b0">
     - 存在しないidを指定したときに在庫情報が削除されないこと
       <img width="950" alt="スクリーンショット 2024-09-26 23 12 12" src="https://github.com/user-attachments/assets/cf262c5f-75a1-4f8c-a673-f904be5d0298">
+
+</details>
+
+##
+
+<details>
+<summary>delete()メソッドのService単体テスト</summary>
+
+- delete()メソッドのService単体テスト
+    - delete()メソッドによってidを指定したときに該当する在庫情報が削除できること
+    - 存在しないidを指定したときに在庫情報が削除されないこと
+
+  https://github.com/sugao-2211/stockListProject/blob/0b85e9b44ccefae4163983bfc801537e8fa5dee2/src/test/java/com/stock/stock/service/StockServiceTest.java#L124-L138
+
+- 実行結果
+    - delete()メソッドによってidを指定したときに該当する在庫情報が削除できること
+      <img width="955" alt="スクリーンショット 2024-09-28 23 54 07" src="https://github.com/user-attachments/assets/6110ccbd-1ca4-4957-b53a-902cde4f757e">
+    - 存在しないidを指定したときに在庫情報が削除されないこと
+      <img width="950" alt="スクリーンショット 2024-09-28 23 53 53" src="https://github.com/user-attachments/assets/10d370cf-5708-494a-b002-4ca2cbddc11f">
 
 </details>
 
