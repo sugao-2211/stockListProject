@@ -16,6 +16,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
@@ -87,6 +88,53 @@ class StockServiceTest {
 
         verify(stockListMapper, times(1)).findByName("硝酸");
         verify(stockListMapper, never()).findAll();
+    }
+
+    @Test
+    public void 新しい在庫情報が登録できること() throws Exception {
+        Stock stock = new Stock(null, "トルエン", "特級", 100, "mL", LocalDate.of(2024, 2, 18));
+        doNothing().when(stockListMapper).insert(stock);
+
+        Stock actual = stockListService.insert(stock);
+        assertThat(actual).isEqualTo(stock);
+        verify(stockListMapper, times(1)).insert(stock);
+    }
+
+    @Test
+    public void idを指定したときに該当する在庫情報が更新できること() throws Exception {
+        Stock stock = new Stock(1, "メタノール", "HPLC用", 3, "L", LocalDate.parse("2023-05-24"));
+        doReturn(Optional.of(stock)).when(stockListMapper).findById(1);
+
+        // 更新情報
+        Stock updateStock = new Stock(1, "メタノール", "特級", 3, "L", LocalDate.parse("2023-05-24"));
+
+        Stock actual = stockListService.update(updateStock);
+        assertThat(actual).isEqualTo(updateStock);
+        verify(stockListMapper, times(1)).update(updateStock);
+    }
+
+    @Test
+    public void 在庫情報を更新する際に存在しないidを指定すると例外をスローすること() {
+        doReturn(Optional.empty()).when(stockListMapper).findById(99);
+        assertThrows(NotFoundException.class, () -> {
+            stockListService.update(new Stock(99, "メタノール", "HPLC用", 3, "L", LocalDate.parse("2023-05-24")));
+        });
+    }
+
+    @Test
+    public void idを指定したときに該当する在庫情報が削除できること() throws Exception {
+        Stock stock = new Stock(1, "メタノール", "HPLC用", 3, "L", LocalDate.parse("2023-05-24"));
+        doReturn(Optional.of(stock)).when(stockListMapper).findById(1);
+        stockListService.delete(1);
+        verify(stockListMapper, times(1)).delete(1);
+    }
+
+    @Test
+    public void 在庫情報を削除する際に存在しないidを指定すると例外をスローすること() {
+        doReturn(Optional.empty()).when(stockListMapper).findById(99);
+        assertThrows(NotFoundException.class, () -> {
+            stockListService.delete(99);
+        });
     }
 
 }
