@@ -489,6 +489,10 @@ https://github.com/users/sugao-2211/projects/1
 <details>
 <summary>結合テスト(新規の在庫情報を登録)</summary>
 
+- 結合テスト(新規の在庫情報を登録)
+  https://github.com/sugao-2211/stockListProject/blob/613feb116ff826bba11a4d31d8ccc54843da50f3/src/test/java/com/stock/stock/integrationtest/StockApiIntegrationTest.java#L214-L662
+
+
 - 新規の在庫情報が登録できること
     - 実行結果
       <img width="1001" alt="スクリーンショット 2024-10-13 21 46 44" src="https://github.com/user-attachments/assets/e977386e-803d-4751-8682-43df5e05ff32">
@@ -743,6 +747,9 @@ https://github.com/users/sugao-2211/projects/1
 - delete()メソッドのService単体テスト
     - delete()メソッドによってidを指定したときに該当する在庫情報が削除できること
     - 在庫情報を削除する際に存在しないidを指定すると例外をスローすること
+- 結合テスト(在庫情報を削除)
+    - 在庫情報を削除できること
+    - 存在しない在庫情報を削除しようとしたときにステータスコード404及びエラーに応じたメッセージが返されること
 
 ##
 
@@ -820,6 +827,24 @@ https://github.com/users/sugao-2211/projects/1
       <img width="955" alt="スクリーンショット 2024-09-28 23 54 07" src="https://github.com/user-attachments/assets/6110ccbd-1ca4-4957-b53a-902cde4f757e">
     - 在庫情報を削除する際に存在しないidを指定すると例外をスローすること
       <img width="950" alt="スクリーンショット 2024-09-29 7 21 24" src="https://github.com/user-attachments/assets/4bb26f16-f34e-436c-a259-4a3648ff3b2f">
+
+</details>
+
+##
+
+<details>
+<summary>結合テスト(在庫情報を削除)</summary>
+
+- 結合テスト(在庫情報を削除)
+  https://github.com/sugao-2211/stockListProject/blob/613feb116ff826bba11a4d31d8ccc54843da50f3/src/test/java/com/stock/stock/integrationtest/StockApiIntegrationTest.java#L1178-L1208
+
+
+- 在庫情報を削除できること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 57 08" src="https://github.com/user-attachments/assets/33f5418c-0900-436a-89e6-2a4064d8e876">
+- 存在しない在庫情報を削除しようとしたときにステータスコード404及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 58 59" src="https://github.com/user-attachments/assets/0c891688-eda1-454c-ae83-c44ce63129ee">
 
 </details>
 
