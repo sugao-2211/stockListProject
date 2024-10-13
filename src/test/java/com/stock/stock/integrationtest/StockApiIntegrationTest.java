@@ -736,14 +736,13 @@ public class StockApiIntegrationTest {
                                         """))
                         .andExpect(MockMvcResultMatchers.status().isBadRequest())
                         .andReturn().getResponse().getContentAsString(StandardCharsets.UTF_8);
-
         JSONAssert.assertEquals("""
                  {
                    "status": "BAD_REQUEST",
                    "message": "validation error",
                    "errors":[
                                 {"field":"name","message":"試薬名が入力されていません"},
-                                {"field":"name","message":"1文字以上、100文字以内で入力してください"}                   
+                                {"field":"name","message":"1文字以上、100文字以内で入力してください"}
                             ]
                  }
                 """, response, JSONCompareMode.STRICT);
