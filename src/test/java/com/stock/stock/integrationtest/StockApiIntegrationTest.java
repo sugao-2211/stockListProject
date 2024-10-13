@@ -721,7 +721,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 在庫情報を更新する際にnameを空文字のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 在庫情報を更新する際にnameが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.patch("/stock/1")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -741,8 +741,8 @@ public class StockApiIntegrationTest {
                    "status": "BAD_REQUEST",
                    "message": "validation error",
                    "errors":[
-                                {"field":"name","message":"試薬名が入力されていません"},
-                                {"field":"name","message":"1文字以上、100文字以内で入力してください"}
+                                {"field":"name","message":"1文字以上、100文字以内で入力してください"},
+                                {"field":"name","message":"試薬名が入力されていません"}
                             ]
                  }
                 """, response, JSONCompareMode.STRICT);
