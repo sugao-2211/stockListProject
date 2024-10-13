@@ -341,6 +341,24 @@ https://github.com/users/sugao-2211/projects/1
     - purchaseの形式が誤っている場合
 - insert()メソッドのDB単体テスト
     - insert()メソッドによって新規の在庫情報が登録できること
+- insert()メソッドのService単体テスト
+    - insert()メソッドによって新規の在庫情報が登録できること
+- 結合テスト(新規の在庫情報を登録)
+    - 新規の在庫情報が登録できること
+    - 新規の在庫情報を登録する際にnameが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 新規の在庫情報を登録する際にnameがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 新規の在庫情報を登録する際にnameが101文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 新規の在庫情報を登録する際にgradeが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 新規の在庫情報を登録する際にgradeがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 新規の在庫情報を登録する際にquantityが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 新規の在庫情報を登録する際にquantityがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 新規の在庫情報を登録する際にquantityが0のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 新規の在庫情報を登録する際にquantityが文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 新規の在庫情報を登録する際にunitが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 新規の在庫情報を登録する際にunitがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 新規の在庫情報を登録する際にpurchaseがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 新規の在庫情報を登録する際にpurchaseが未来の日付のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 新規の在庫情報を登録する際にpurchaseの形式が正しくないときにステータスコード400及びエラーに応じたメッセージが返されること
 
 ##
 
@@ -465,6 +483,57 @@ https://github.com/users/sugao-2211/projects/1
 
 - 実行結果
   <img width="1001" alt="スクリーンショット 2024-09-28 23 27 03" src="https://github.com/user-attachments/assets/d5d02bf4-b229-4d6a-a74d-08e1d84290a7">
+
+</details>
+
+<details>
+<summary>結合テスト(新規の在庫情報を登録)</summary>
+
+- 新規の在庫情報が登録できること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 21 46 44" src="https://github.com/user-attachments/assets/e977386e-803d-4751-8682-43df5e05ff32">
+- 新規の在庫情報を登録する際にnameが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 19 10" src="https://github.com/user-attachments/assets/27b53c88-19ea-4d53-8202-e231e76b9c04">
+- 新規の在庫情報を登録する際にnameがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 22 46" src="https://github.com/user-attachments/assets/9de17a34-a0f8-45ec-a463-e326238a3f61">
+- 新規の在庫情報を登録する際にnameが101文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 24 28" src="https://github.com/user-attachments/assets/9a09e45b-bbec-4e2c-bf3f-1e4b07494c8c">
+- 新規の在庫情報を登録する際にgradeが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 26 02" src="https://github.com/user-attachments/assets/1a60c055-4d79-4e84-b754-6eaa1b935771">
+- 新規の在庫情報を登録する際にgradeがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 28 08" src="https://github.com/user-attachments/assets/131664df-2e1b-4bab-ba4d-f7bcb8f4c159">
+- 新規の在庫情報を登録する際にquantityが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 29 35" src="https://github.com/user-attachments/assets/5283a189-922c-4472-bf4c-3aeea8cdc01a">
+- 新規の在庫情報を登録する際にquantityがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 30 53" src="https://github.com/user-attachments/assets/4d64227e-d965-47fc-bd73-c4c6474f1f78">
+- 新規の在庫情報を登録する際にquantityが0のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 32 22" src="https://github.com/user-attachments/assets/455d38cf-26b7-4a9b-aa6b-19918e95ff0d">
+- 新規の在庫情報を登録する際にquantityが文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 33 47" src="https://github.com/user-attachments/assets/73710657-3fb7-4ef5-9d2e-361eae095dde">
+- 新規の在庫情報を登録する際にunitが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 35 35" src="https://github.com/user-attachments/assets/e6017e52-41de-43e3-9659-2cb10a3cd5aa">
+- 新規の在庫情報を登録する際にunitがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 37 21" src="https://github.com/user-attachments/assets/57e4ec68-2b3e-4dbf-a0e1-0c3bda28a6fe">
+- 新規の在庫情報を登録する際にpurchaseがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 38 52" src="https://github.com/user-attachments/assets/d93ae597-8e3c-4db1-a5ff-05a2f12317f8">
+- 新規の在庫情報を登録する際にpurchaseが未来の日付のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 40 40" src="https://github.com/user-attachments/assets/c46412e0-1acd-41b7-aaea-4d248d581b40">
+- 新規の在庫情報を登録する際にpurchaseの形式が正しくないときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 実行結果
+      <img width="1001" alt="スクリーンショット 2024-10-13 22 41 54" src="https://github.com/user-attachments/assets/fbcf38db-f6da-4717-81dc-b03f19d8fb13">
 
 </details>
 
