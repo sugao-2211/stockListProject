@@ -215,7 +215,7 @@ public class StockApiIntegrationTest {
     @DataSet(value = "datasets/stockList.yml")
     @ExpectedDataSet(value = "datasets/stockList_insert.yml", ignoreCols = "id")
     @Transactional
-    void 新しい在庫情報が登録できること() throws Exception {
+    void 新規の在庫情報が登録できること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -242,7 +242,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 新しい在庫情報を登録する際にnameが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 新規の在庫情報を登録する際にnameが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -273,7 +273,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 新しい在庫情報がを登録する際にnameがnullのときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 新規の在庫情報を登録する際にnameがnullのときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -303,7 +303,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 新しい在庫情報を登録する際にnameが101文字のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 新規の在庫情報を登録する際にnameが101文字のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -333,7 +333,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 新しい在庫情報を登録する際にgradeが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 新規の在庫情報を登録する際にgradeが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -363,7 +363,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 新しい在庫情報を登録する際にgradeがnullのときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 新規の在庫情報を登録する際にgradeがnullのときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -393,7 +393,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 新しい在庫情報を登録する際にquantityが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 新規の在庫情報を登録する際にquantityが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -423,7 +423,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 新しい在庫情報を登録する際にquantityがnullのときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 新規の在庫情報を登録する際にquantityがnullのときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -453,7 +453,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 新しい在庫情報を登録する際にquantityが0のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 新規の在庫情報を登録する際にquantityが0のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -483,7 +483,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 新しい在庫情報を登録する際にquantityが文字のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 新規の在庫情報を登録する際にquantityが文字のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -513,7 +513,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 新しい在庫情報を登録する際にunitが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 新規の在庫情報を登録する際にunitが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -543,7 +543,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 新しい在庫情報を登録する際にunitがnullのときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 新規の在庫情報を登録する際にunitがnullのときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -573,7 +573,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 新しい在庫情報を登録する際にpurchaseがnullのときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 新規の在庫情報を登録する際にpurchaseがnullのときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -603,7 +603,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 新しい在庫情報を登録する際にpurchaseが未来の日付のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 新規の在庫情報を登録する際にpurchaseが未来の日付のときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -633,7 +633,7 @@ public class StockApiIntegrationTest {
     @Test
     @DataSet(value = "datasets/stockList.yml")
     @Transactional
-    void 新しい在庫情報を登録する際にpurchaseの形式が正しくないときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
+    void 新規の在庫情報を登録する際にpurchaseの形式が正しくないときにステータスコード400及びエラーに応じたメッセージが返されること() throws Exception {
         String response =
                 mockMvc.perform(MockMvcRequestBuilders.post("/stock")
                                 .contentType(MediaType.APPLICATION_JSON_VALUE)
