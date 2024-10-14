@@ -486,6 +486,8 @@ https://github.com/users/sugao-2211/projects/1
 
 </details>
 
+##
+
 <details>
 <summary>結合テスト(新規の在庫情報を登録)</summary>
 
@@ -581,6 +583,24 @@ https://github.com/users/sugao-2211/projects/1
 - update()メソッドのService単体テスト
     - update()メソッドによってidを指定したときに該当する在庫情報が更新できること
     - 在庫情報を更新する際に存在しないidを指定すると例外をスローすること
+- 結合テスト(在庫情報の更新)
+    - 在庫情報が更新できること
+    - 存在しない在庫情報を更新しようとしたときにステータスコード404及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にnameが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にnameがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にnameが101文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にgradeが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にgradeがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にquantityが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にquantityがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にquantityが0のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にquantityが文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にunitが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にunitがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にpurchaseが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にpurchaseがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にpurchaseが未来の日付のときにステータスコード400及びエラーに応じたメッセージが返されること
+    - 在庫情報を更新する際にpurchaseが形式が正しくないときにステータスコード400及びエラーに応じたメッセージが返されること
 
 ##
 
@@ -723,6 +743,69 @@ https://github.com/users/sugao-2211/projects/1
       <img width="1129" alt="スクリーンショット 2024-09-28 23 48 04" src="https://github.com/user-attachments/assets/b2b7b3a4-3af4-4114-9eb9-0978e9bfd779">
     - 在庫情報を更新する際に存在しないidを指定すると例外をスローすること
       <img width="1016" alt="スクリーンショット 2024-09-29 7 19 26" src="https://github.com/user-attachments/assets/676af2ba-9c9d-40f0-aeb8-13efdee377b4">
+
+</details>
+
+##
+
+<details>
+<summary>結合テスト(在庫情報の更新)</summary>
+
+- 結合テスト(在庫情報の更新)
+  https://github.com/sugao-2211/stockListProject/blob/613feb116ff826bba11a4d31d8ccc54843da50f3/src/test/java/com/stock/stock/integrationtest/StockApiIntegrationTest.java#L663-L1169
+
+- 結合テスト(在庫情報の更新)
+    - 在庫情報が更新できること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 27 20" src="https://github.com/user-attachments/assets/5203a6e5-a6dd-4603-9809-51362f5e8748">
+    - 存在しない在庫情報を更新しようとしたときにステータスコード404及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 31 32" src="https://github.com/user-attachments/assets/9451d694-eb55-48f0-ace0-0813339130a5">
+    - 在庫情報を更新する際にnameが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 33 24" src="https://github.com/user-attachments/assets/5eba2639-9914-4173-ad8d-5e8dcf029505">
+    - 在庫情報を更新する際にnameがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 35 08" src="https://github.com/user-attachments/assets/3f15768a-9a59-4f91-b1b7-a3d202d92cf5">
+    - 在庫情報を更新する際にnameが101文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 37 01" src="https://github.com/user-attachments/assets/80f21bca-23d0-44f8-bd9d-a3bbe86c86f8">
+    - 在庫情報を更新する際にgradeが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 38 17" src="https://github.com/user-attachments/assets/deb84206-b9ef-4ed8-ab12-8cda0a40bf64">
+    - 在庫情報を更新する際にgradeがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 39 58" src="https://github.com/user-attachments/assets/e5b9b3b4-7e68-4b0c-b1d2-993bd1ef44e4">
+    - 在庫情報を更新する際にquantityが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 41 18" src="https://github.com/user-attachments/assets/e7290774-0896-4e90-98dc-638b516b4208">
+    - 在庫情報を更新する際にquantityがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 42 31" src="https://github.com/user-attachments/assets/2ef28276-74a2-4bab-ac52-0dbe9e968fd0">
+    - 在庫情報を更新する際にquantityが0のときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 43 48" src="https://github.com/user-attachments/assets/33e946a4-334e-49e5-9ac7-816ffcec08f1">
+    - 在庫情報を更新する際にquantityが文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 45 33" src="https://github.com/user-attachments/assets/d17cd5ba-3202-460a-bfbb-0c28f6fee03e">
+    - 在庫情報を更新する際にunitが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 46 32" src="https://github.com/user-attachments/assets/bc7f7863-036d-4118-ae70-3e089a9ba9d2">
+    - 在庫情報を更新する際にunitがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 48 11" src="https://github.com/user-attachments/assets/00917bf0-421e-4678-a9af-b7fc01385cc8">
+    - 在庫情報を更新する際にpurchaseが空文字のときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 52 02" src="https://github.com/user-attachments/assets/0317ce38-efd2-45b6-8ed5-e2d0c3f7940b">
+    - 在庫情報を更新する際にpurchaseがnullのときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 53 24" src="https://github.com/user-attachments/assets/4fcfded0-95c8-41ae-b734-dbc36fde78ca">
+    - 在庫情報を更新する際にpurchaseが未来の日付のときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 54 32" src="https://github.com/user-attachments/assets/41365188-1790-4324-839b-3a2b6230fd13">
+    - 在庫情報を更新する際にpurchaseが形式が正しくないときにステータスコード400及びエラーに応じたメッセージが返されること
+        - 実行結果
+          <img width="1016" alt="スクリーンショット 2024-10-14 11 56 01" src="https://github.com/user-attachments/assets/d963ac99-bc84-497b-92d4-01070fa4ce24">
 
 </details>
 
